@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://fisch-wiki-6jlv.vercel.app';
+  const baseUrl = 'https://fisch.robloxwikihub.com';
   const currentDate = new Date().toISOString();
 
   return [

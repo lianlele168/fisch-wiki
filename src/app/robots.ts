@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/']
     },
-    sitemap: 'https://fisch-wiki-6jlv.vercel.app/sitemap.xml'
+    sitemap: 'https://fisch.robloxwikihub.com/sitemap.xml'
   };
 }

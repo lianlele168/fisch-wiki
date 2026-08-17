@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://fisch-wiki.vercel.app'),
+  metadataBase: new URL('https://fisch.robloxwikihub.com'),
   alternates: {
     canonical: '/',
   },
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: 'Roblox Fisch Wiki & Codes Database',
     description: 'Active Fisch codes, fishing rod tier list, secret locations, and weather totems for Roblox anglers.',
     type: 'website',
-    url: 'https://fisch-wiki.vercel.app',
+    url: 'https://fisch.robloxwikihub.com',
     siteName: 'Fisch Wiki'
   },
   twitter: {
@@ -55,7 +55,7 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Fisch Wiki',
-    url: 'https://fisch-wiki.vercel.app',
+    url: 'https://fisch.robloxwikihub.com',
     description: 'The ultimate Roblox Fisch Wiki & Database for active codes, rod tier lists, and map coordinates.'
   };
 
