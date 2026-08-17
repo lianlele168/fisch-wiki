@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Anchor, ExternalLink, Heart } from 'lucide-react';
+import MatrixNav from './MatrixNav';
 
 export default function Footer() {
   return (
@@ -64,7 +65,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+      <MatrixNav />
+
+      <div className="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
         <p>© {new Date().getFullYear()} Fisch Wiki. All rights reserved.</p>
         <p className="flex items-center gap-1">
           <span>Crafted with</span>
@@ -75,3 +78,4 @@ export default function Footer() {
     </footer>
   );
 }
+

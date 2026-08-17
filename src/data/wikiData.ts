@@ -57,11 +57,10 @@ export interface FishItem {
 
 // 1. Active & Expired Codes
 export const ACTIVE_CODES: CodeItem[] = [
-  { code: 'ThanksFor100M', reward: '3x EXP Boost (30m) & $500 Cash', status: 'Active', addedDate: 'Verified 2026' },
-  { code: 'FischFright', reward: '20x Candy Corn & Halloween Bait Box', status: 'Active', addedDate: 'Verified 2026' },
-  { code: 'Scraptown', reward: '$1,000 Cash & 1.5x Luck Boost', status: 'Active', addedDate: 'Verified 2026' },
-  { code: '100k', reward: '2x Luck Boost (20 mins)', status: 'Active', addedDate: 'Verified 2026' },
-  { code: 'SorryForShutdown', reward: '2x EXP Boost & 5x Bait Crates', status: 'Active', addedDate: 'Verified 2026' }
+  { code: 'CollectMyPufferfish', reward: '1,000 Coins, Giant Jetski, 5x Icy Dots, 5x Coral Pearl & Random Totem (Level 25+)', status: 'Active', addedDate: 'August 17, 2026' },
+  { code: 'SCARLET', reward: 'Scarlet Weapon Skin for Nate\'s Blade', status: 'Active', addedDate: 'August 17, 2026' },
+  { code: 'TemporarySubmarine', reward: 'Free Submarine Parts Crate', status: 'Active', addedDate: 'August 17, 2026' },
+  { code: 'CARBON', reward: 'Free Carbon Bobber Equipment', status: 'Active', addedDate: 'August 17, 2026' },
 ];
 
 export const EXPIRED_CODES: CodeItem[] = [

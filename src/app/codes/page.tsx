@@ -10,13 +10,80 @@ export const metadata: Metadata = {
 };
 
 export default function CodesPage() {
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How do I redeem codes in Roblox Fisch?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Open Roblox Fisch, click the Settings Gear icon at the top of your screen, scroll down to the bottom of the menu, paste your code into the Enter Code box, and hit Enter.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What rewards do Fisch codes give?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Fisch codes reward players with free Cash, 2x EXP Boost multipliers, Bait Boxes, Bobbers, and rare titles.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Why did my Fisch code fail to redeem?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Fisch codes expire quickly following update releases. Make sure you enter exact capitalization and check if you already redeemed it.',
+        },
+      },
+    ],
+  };
+
+  const howToSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Redeem Codes in Roblox Fisch',
+    description: 'Quick step-by-step guide to redeem active codes in Roblox Fisch for free cash and boosts.',
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Launch Roblox Fisch',
+        itemListElement: [{ '@type': 'HowToDirection', text: 'Open Roblox Fisch on PC, Mobile, or Console.' }],
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Open Settings',
+        itemListElement: [{ '@type': 'HowToDirection', text: 'Click the Settings Gear Icon at the top of your screen and scroll to the bottom.' }],
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Enter Active Code',
+        itemListElement: [{ '@type': 'HowToDirection', text: 'Paste your code into the Enter Code box and press Enter to receive free rewards.' }],
+      },
+    ],
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+
       {/* Header Banner */}
       <div className="space-y-4 text-center sm:text-left border-b border-slate-800 pb-8">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-400 text-xs font-semibold">
           <Gift className="w-4 h-4 animate-pulse" />
-          <span>Active & Tested Daily</span>
+          <span>Active & Tested Daily: August 17, 2026</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Roblox <span className="gradient-text-gold">Fisch Codes</span> (August 2026)
@@ -100,3 +167,4 @@ export default function CodesPage() {
     </div>
   );
 }
+
