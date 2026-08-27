@@ -57,13 +57,14 @@ export interface FishItem {
 
 // 1. Active & Expired Codes
 export const ACTIVE_CODES: CodeItem[] = [
-  { code: 'CollectMyPufferfish', reward: '1,000 Coins, Giant Jetski, 5x Icy Dots, 5x Coral Pearl & Random Totem (Level 25+)', status: 'Active', addedDate: 'August 17, 2026' },
-  { code: 'SCARLET', reward: 'Scarlet Weapon Skin for Nate\'s Blade', status: 'Active', addedDate: 'August 17, 2026' },
-  { code: 'TemporarySubmarine', reward: 'Free Submarine Parts Crate', status: 'Active', addedDate: 'August 17, 2026' },
-  { code: 'CARBON', reward: 'Free Carbon Bobber Equipment', status: 'Active', addedDate: 'August 17, 2026' },
+  { code: 'SCARLET', reward: 'Scarlet Weapon Skin for Nate\'s Blade', status: 'Active', addedDate: 'August 27, 2026' },
+  { code: 'TemporarySubmarine', reward: 'Submarine Parts Crate (Back Fins, Metal Panels, Side Fins, Submarine Top & Windows)', status: 'Active', addedDate: 'August 27, 2026' },
+  { code: 'CARBON', reward: 'Free Carbon Bobber Equipment', status: 'Active', addedDate: 'August 27, 2026' },
 ];
 
 export const EXPIRED_CODES: CodeItem[] = [
+  { code: 'CollectMyPufferfish', reward: '1,000 Coins, Giant Jetski, 5x Icy Dots & Random Totem', status: 'Expired' },
+  { code: 'ShootingStars', reward: 'Free Bobber & Star Crate', status: 'Expired' },
   { code: 'TEST', reward: '$100 Cash', status: 'Expired' },
   { code: 'RELEASE', reward: 'Starter Bait Box', status: 'Expired' },
   { code: 'BETA', reward: 'Special Title', status: 'Expired' }

@@ -83,7 +83,7 @@ export default function CodesPage() {
       <div className="space-y-4 text-center sm:text-left border-b border-slate-800 pb-8">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-400 text-xs font-semibold">
           <Gift className="w-4 h-4 animate-pulse" />
-          <span>Active & Tested Daily: August 17, 2026</span>
+          <span>Active & Tested Daily: August 27, 2026</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Roblox <span className="gradient-text-gold">Fisch Codes</span> (August 2026)
