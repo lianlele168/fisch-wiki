@@ -6,10 +6,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: baseUrl,
+      url: `${baseUrl}/`,
       lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 1.0
+    },
+    {
+      url: `${baseUrl}/calculator/`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95
     },
     {
       url: `${baseUrl}/codes/`,

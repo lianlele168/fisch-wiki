@@ -8,6 +8,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
+    { name: 'Calculator', href: '/calculator', icon: Sparkles, badge: 'TOOL' },
     { name: 'Codes', href: '/codes', icon: Gift, badge: 'HOT' },
     { name: 'Rod Tier List', href: '/rod-tier-list', icon: ShieldAlert },
     { name: 'Locations & Map', href: '/locations', icon: Compass },
