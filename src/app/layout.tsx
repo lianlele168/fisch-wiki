@@ -5,9 +5,6 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://fisch.robloxwikihub.com'),
-  alternates: {
-    canonical: '/',
-  },
   title: 'Fisch Wiki — Roblox Fisch Codes, Rod Tier List & Map Locations (August 2026)',
   description: 'The ultimate Roblox Fisch Wiki & Database. Get active fisch codes, fishing rod tier list, desolate deep location coordinates, enchantments, and fish values.',
   keywords: [
