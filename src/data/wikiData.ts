@@ -276,11 +276,49 @@ export const TOTEMS_DATA: TotemItem[] = [
 
 // 6. Fish Price & Rarity Data
 export const FISH_VALUES: FishItem[] = [
+  // Mythical & Event Bosses
+  { name: 'Celestial Leviathan', rarity: 'Mythical', basePrice: '$15,000', preferredWeather: 'Night / Clear', preferredSeason: 'All', location: 'Keep Sanctuary (Secret Altar)' },
   { name: 'Megalodon Shark', rarity: 'Mythical', basePrice: '$12,500', preferredWeather: 'Thunderstorm', preferredSeason: 'Autumn', location: 'Deep Ocean Trench' },
-  { name: 'Celestial Leviathan', rarity: 'Mythical', basePrice: '$15,000', preferredWeather: 'Night / Clear', preferredSeason: 'All', location: 'Secret Sanctuary' },
-  { name: 'Magma Shark', rarity: 'Legendary', basePrice: '$3,800', preferredWeather: 'Any', preferredSeason: 'Summer', location: 'Roslit Volcano Lava' },
-  { name: 'Abyssal Angler', rarity: 'Legendary', basePrice: '$4,200', preferredWeather: 'Fog', preferredSeason: 'Winter', location: 'Desolate Deep' },
-  { name: 'Glacier Cod', rarity: 'Rare', basePrice: '$850', preferredWeather: 'Snow / Wind', preferredSeason: 'Winter', location: 'Snowcap Island' },
-  { name: 'Golden Perch', rarity: 'Rare', basePrice: '$650', preferredWeather: 'Sunny', preferredSeason: 'Spring', location: 'Moosewood' },
-  { name: 'Moosewood Trout', rarity: 'Common', basePrice: '$45', preferredWeather: 'Any', preferredSeason: 'All', location: 'Moosewood Docks' }
+  { name: 'Bioluminescent Kraken', rarity: 'Mythical', basePrice: '$14,200', preferredWeather: 'Fog', preferredSeason: 'Winter', location: 'Desolate Deep Abyssal Trench' },
+  { name: 'Ancient Depth Serpent', rarity: 'Mythical', basePrice: '$16,500', preferredWeather: 'Rain', preferredSeason: 'All', location: 'Brine Pool Sub-Trench' },
+  { name: 'Spectral Ghost Fish', rarity: 'Mythical', basePrice: '$11,000', preferredWeather: 'Night / Fog', preferredSeason: 'Autumn', location: 'Sunken Shipwreck' },
+
+  // Legendary Predators & Deep Sea
+  { name: 'Magma Shark', rarity: 'Legendary', basePrice: '$4,500', preferredWeather: 'Sunny', preferredSeason: 'Summer', location: 'Roslit Volcano Lava Pool' },
+  { name: 'Abyssal Anglerfish', rarity: 'Legendary', basePrice: '$4,200', preferredWeather: 'Fog', preferredSeason: 'Winter', location: 'Desolate Deep' },
+  { name: 'Electric Eel', rarity: 'Legendary', basePrice: '$3,600', preferredWeather: 'Thunderstorm', preferredSeason: 'Spring', location: 'Terrapin Island Mangroves' },
+  { name: 'Tempest Shark', rarity: 'Legendary', basePrice: '$4,800', preferredWeather: 'Thunderstorm', preferredSeason: 'Autumn', location: 'Open Ocean Whirlpool' },
+  { name: 'Gilded Sailfish', rarity: 'Legendary', basePrice: '$3,900', preferredWeather: 'Windy', preferredSeason: 'Summer', location: 'Sunstone Island Cliffs' },
+  { name: 'Blizzard Salmon', rarity: 'Legendary', basePrice: '$3,750', preferredWeather: 'Snow', preferredSeason: 'Winter', location: 'Snowcap Peak Lake' },
+  { name: 'Phantom Ray', rarity: 'Legendary', basePrice: '$4,100', preferredWeather: 'Night', preferredSeason: 'Spring', location: 'Secret Island Caverns' },
+
+  // Rare Species
+  { name: 'Glacier Cod', rarity: 'Rare', basePrice: '$850', preferredWeather: 'Snow / Wind', preferredSeason: 'Winter', location: 'Snowcap Island Shore' },
+  { name: 'Golden Perch', rarity: 'Rare', basePrice: '$650', preferredWeather: 'Sunny', preferredSeason: 'Spring', location: 'Moosewood Deep Pond' },
+  { name: 'Obsidian Salmon', rarity: 'Rare', basePrice: '$920', preferredWeather: 'Any', preferredSeason: 'Summer', location: 'Roslit Bay Basalt Rocks' },
+  { name: 'Starlight Flounder', rarity: 'Rare', basePrice: '$980', preferredWeather: 'Night / Clear', preferredSeason: 'All', location: 'Keep Sanctuary' },
+  { name: 'Alligator Gar', rarity: 'Rare', basePrice: '$780', preferredWeather: 'Fog / Rain', preferredSeason: 'Summer', location: 'Terrapin Bayou' },
+  { name: 'Void Squid', rarity: 'Rare', basePrice: '$1,100', preferredWeather: 'Any', preferredSeason: 'Winter', location: 'Desolate Deep Entrance' },
+  { name: 'Amberjack King', rarity: 'Rare', basePrice: '$820', preferredWeather: 'Windy', preferredSeason: 'Autumn', location: 'Sunstone Coral Reef' },
+  { name: 'Aurora Trout', rarity: 'Rare', basePrice: '$950', preferredWeather: 'Snow / Night', preferredSeason: 'Winter', location: 'Snowcap Glacier Cave' },
+
+  // Uncommon Species
+  { name: 'Roslit Flounder', rarity: 'Uncommon', basePrice: '$280', preferredWeather: 'Clear', preferredSeason: 'Summer', location: 'Roslit Bay Beach' },
+  { name: 'Clownfish', rarity: 'Uncommon', basePrice: '$210', preferredWeather: 'Sunny', preferredSeason: 'Spring', location: 'Sunstone Island Shallows' },
+  { name: 'Terrapin Mudfish', rarity: 'Uncommon', basePrice: '$190', preferredWeather: 'Rain', preferredSeason: 'Summer', location: 'Terrapin Island Swamp' },
+  { name: 'Frost Trout', rarity: 'Uncommon', basePrice: '$320', preferredWeather: 'Snow', preferredSeason: 'Winter', location: 'Snowcap Docks' },
+  { name: 'Red Snapper', rarity: 'Uncommon', basePrice: '$250', preferredWeather: 'Windy', preferredSeason: 'Autumn', location: 'Moosewood Ocean Edge' },
+  { name: 'Angelfish', rarity: 'Uncommon', basePrice: '$310', preferredWeather: 'Sunny', preferredSeason: 'Spring', location: 'Sunstone Coral Reef' },
+  { name: 'Swamp Eel', rarity: 'Uncommon', basePrice: '$240', preferredWeather: 'Fog', preferredSeason: 'Autumn', location: 'Terrapin Mangroves' },
+  { name: 'Ice Pike', rarity: 'Uncommon', basePrice: '$340', preferredWeather: 'Snow / Wind', preferredSeason: 'Winter', location: 'Snowcap Ice Shelf' },
+
+  // Common Species
+  { name: 'Moosewood Trout', rarity: 'Common', basePrice: '$45', preferredWeather: 'Any', preferredSeason: 'All', location: 'Moosewood Starter Docks' },
+  { name: 'Pond Perch', rarity: 'Common', basePrice: '$35', preferredWeather: 'Sunny', preferredSeason: 'Spring', location: 'Moosewood Village Pond' },
+  { name: 'Common Carp', rarity: 'Common', basePrice: '$50', preferredWeather: 'Rain', preferredSeason: 'All', location: 'Moosewood River' },
+  { name: 'Ocean Minnow', rarity: 'Common', basePrice: '$30', preferredWeather: 'Any', preferredSeason: 'Summer', location: 'Shallow Waters' },
+  { name: 'Sea Bass', rarity: 'Common', basePrice: '$65', preferredWeather: 'Windy', preferredSeason: 'Autumn', location: 'Moosewood Coast' },
+  { name: 'Sand Goby', rarity: 'Common', basePrice: '$40', preferredWeather: 'Sunny', preferredSeason: 'Summer', location: 'Roslit Coast Sandbar' },
+  { name: 'Weed Shiner', rarity: 'Common', basePrice: '$25', preferredWeather: 'Any', preferredSeason: 'Spring', location: 'Terrapin Shallows' },
+  { name: 'Kelp Crab', rarity: 'Common', basePrice: '$55', preferredWeather: 'Fog', preferredSeason: 'All', location: 'Ocean Floor Kelp Forests' }
 ];
