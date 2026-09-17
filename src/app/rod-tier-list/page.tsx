@@ -3,7 +3,11 @@ import { ShieldAlert, Trophy, DollarSign, Zap, Compass, Star } from 'lucide-reac
 import { RODS_DATA, RodItem } from '@/data/wikiData';
 
 export const metadata: Metadata = {
-  title: 'Roblox Fisch Rod Tier List (August 2026) — Best Rods Ranked',
+  alternates: {
+    canonical: '/rod-tier-list',
+  },
+
+  title: 'Roblox Fisch Rod Tier List (September 2026) — Best Rods Ranked',
   description: 'Complete Roblox Fisch Fishing Rod Tier List. Compare Supreme Rod, Destiny Rod, Magma Rod, and Carbon Rod prices, lure speeds, and luck stats.',
   keywords: ['fisch rod tier list', 'best rod in fisch', 'fisch supreme rod', 'fisch magma rod', 'roblox fisch rods']
 };

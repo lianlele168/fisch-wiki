@@ -4,9 +4,13 @@ import { ACTIVE_CODES, EXPIRED_CODES } from '@/data/wikiData';
 import CopyButton from '@/components/CopyButton';
 
 export const metadata: Metadata = {
-  title: 'Roblox Fisch Codes (August 2026) — Active Free Cash & EXP Boosts',
+  alternates: {
+    canonical: '/codes',
+  },
+
+  title: 'Roblox Fisch Codes (September 2026) — Active Free Cash & EXP Boosts',
   description: 'Full list of working active Roblox Fisch codes. Copy codes for free cash, EXP boosts, and bait crates. Updated daily with new working codes.',
-  keywords: ['fisch codes', 'roblox fisch codes', 'active fisch codes', 'fisch codes august 2026', 'codes for fisch']
+  keywords: ['fisch codes', 'roblox fisch codes', 'active fisch codes', 'fisch codes september 2026', 'codes for fisch']
 };
 
 export default function CodesPage() {
@@ -86,7 +90,7 @@ export default function CodesPage() {
           <span>Active & Tested Daily: August 27, 2026</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-          Roblox <span className="gradient-text-gold">Fisch Codes</span> (August 2026)
+          Roblox <span className="gradient-text-gold">Fisch Codes</span> (September 2026)
         </h1>
         <p className="text-slate-300 text-sm max-w-2xl leading-relaxed">
           Redeem the latest active Roblox Fisch codes below to unlock free cash, 2x EXP boosts, and bait boxes. Click any code box to copy it directly!

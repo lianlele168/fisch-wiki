@@ -5,6 +5,10 @@ import Image from 'next/image';
 import AuthorCard from '@/components/AuthorCard';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/beginner-guide',
+  },
+
   title: 'Roblox Fisch Beginner Guide — Fast Leveling 1 to 50, Economy & Best Rods',
   description: 'Complete Roblox Fisch progression roadmap. Master early economy, fast level 1-50 routes, optimal rod upgrades, bait synergy, and secret endgame trench locations.',
   keywords: ['fisch beginner guide', 'fisch leveling guide', 'fisch fast exp', 'how to level up in fisch', 'fisch rod progression', 'fisch best bait']

@@ -4,6 +4,10 @@ import { LOCATIONS_DATA } from '@/data/wikiData';
 import CopyButton from '@/components/CopyButton';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/locations',
+  },
+
   title: 'Roblox Fisch Map & Locations Guide — Desolate Deep Coordinates',
   description: 'Find all Roblox Fisch island coordinates, secret underwater trenches like Desolate Deep, entry gear requirements, and rare fish spawn spots.',
   keywords: ['fisch locations guide', 'fisch desolate deep location', 'fisch secret island location', 'fisch map coordinates']

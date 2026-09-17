@@ -50,6 +50,9 @@ export default function AuthorCard({
       <p className="text-xs sm:text-sm text-gray-400 mt-3 leading-relaxed italic">
         "{editorialNote}"
       </p>
+      <div className="mt-2 pt-2 border-t border-cyan-900/30 text-right">
+        <a href="https://robloxwikihub.com/about#methodology" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 text-xs underline">Editorial Standards & Methodology →</a>
+      </div>
     </div>
   );
 }

@@ -4,6 +4,10 @@ import { ENCHANTMENTS_DATA, TOTEMS_DATA } from '@/data/wikiData';
 import CopyButton from '@/components/CopyButton';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/enchantments-totems',
+  },
+
   title: 'Roblox Fisch Enchantments Tier List & Weather Totem Locations',
   description: 'Complete guide to Roblox Fisch enchantments (Sea King, Hasty, Lucky) and weather totems (Tempest, Wind, Sun Totem coordinates).',
   keywords: ['fisch enchantments tier list', 'fisch best enchants', 'fisch totem locations', 'fisch tempest totem']

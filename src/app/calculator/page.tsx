@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   title: 'Fisch Calculator: Catch Probability, Rod Luck & C$ Profit Simulator',
   description: 'Interactive Roblox Fisch calculator. Calculate exact catch odds, rod luck multipliers, lure speed, and projected C$ earnings per hour. Simulate 100 casts across all islands.',
   alternates: {
-    canonical: 'https://fisch.robloxwikihub.com/calculator/',
+    canonical: 'https://fisch.robloxwikihub.com/calculator',
   },
   openGraph: {
     title: 'Roblox Fisch Catch Odds & Profit Calculator',
     description: 'Simulate your Fisch catch probabilities, rod luck bonuses, and hourly C$ profit.',
-    url: 'https://fisch.robloxwikihub.com/calculator/',
+    url: 'https://fisch.robloxwikihub.com/calculator',
     type: 'website',
   },
 };
@@ -22,7 +22,7 @@ export default function CalculatorPage() {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: 'Roblox Fisch Catch Probability & Profit Calculator',
-    url: 'https://fisch.robloxwikihub.com/calculator/',
+    url: 'https://fisch.robloxwikihub.com/calculator',
     applicationCategory: 'GameApplication',
     operatingSystem: 'All',
     offers: {
