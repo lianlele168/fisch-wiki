@@ -14,7 +14,7 @@ export default function AuthorCard({
   role = 'Lead Mechanics Analyst',
   experience = '250+ Hours In-Game Verified',
   patchVersion = 'Patch v1.48 Verified',
-  lastUpdated = 'September 2026',
+  lastUpdated = '',
   editorialNote = 'All drop rates, luck multipliers, and mathematical formulas are reverse-engineered and cross-checked against live in-game logs.',
 }: AuthorCardProps) {
   return (
@@ -41,9 +41,7 @@ export default function AuthorCard({
           <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-500/10 text-amber-300 border border-amber-500/20">
             ⚡ {patchVersion}
           </span>
-          <span className="text-xs text-gray-400">
-            Updated: <strong className="text-gray-200">{lastUpdated}</strong>
-          </span>
+          
         </div>
       </div>
 

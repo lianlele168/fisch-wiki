@@ -12,7 +12,7 @@ export interface CodeItem {
   /** Drives the grouping used on the codes page. */
   category?: 'permanent' | 'update' | 'event';
   /** Date this row was last checked against sources. */
-  verifiedDate?: string;
+
 }
 
 export interface RodItem {
@@ -66,7 +66,7 @@ export interface FishItem {
 }
 
 // 1. Active & Expired Codes
-// Sources cross-checked 2026-09-18: Pocket Gamer (Sep 12), PlayPatch (Sep 13),
+// Sources cross-checked : Pocket Gamer (Sep 12), PlayPatch (Sep 13),
 // Radio Times, BloxGuidesGG, Nerd's Chalk, HermitGamer.
 // NOTE: Fisch retires almost every update code roughly 24 hours after release,
 // so a long "active" list is a red flag, not a selling point.
@@ -75,38 +75,38 @@ export const ACTIVE_CODES: CodeItem[] = [
     code: 'SCARLET',
     reward: "Scarlet skin for Nate's Blade",
     status: 'Active',
-    addedDate: 'December 7, 2025',
-    expires: 'December 15, 2026',
+    addedDate: '',
+    expires: '',
     category: 'permanent',
-    verifiedDate: 'September 18, 2026',
+    
   },
   {
     code: 'TemporarySubmarine',
     reward: 'Submarine parts crate — Back Fins, Metal Panels, Side Fins, Submarine Top & Windows',
     status: 'Active',
-    addedDate: 'September 1, 2025',
-    expires: 'October 18, 2026',
+    addedDate: '',
+    expires: '',
     category: 'permanent',
-    verifiedDate: 'September 18, 2026',
+    
   },
   {
     code: 'CARBON',
     reward: 'Carbon bobber',
     status: 'Active',
-    addedDate: 'January 25, 2025',
+    addedDate: '',
     expires: 'No published expiry',
     category: 'permanent',
-    verifiedDate: 'September 18, 2026',
+    
   },
   {
     code: 'LittleBudlingUpdate',
     reward: "1,000 C$ + Walrus boat + 5x Icy Fisch'n Dots + 5x Coral Pearl + 5x Cotton Candy Pieces + 5x Tropical Fruit Mix + 1x Random Totem",
     status: 'Active',
-    addedDate: 'September 12, 2026',
+    addedDate: '',
     levelReq: 'Level 25+',
     isNew: true,
     category: 'update',
-    verifiedDate: 'September 18, 2026',
+    
   },
   {
     code: 'SkycrestIsInTheSky',
@@ -114,7 +114,7 @@ export const ACTIVE_CODES: CodeItem[] = [
     status: 'Active',
     levelReq: 'Level 25+',
     category: 'update',
-    verifiedDate: 'September 18, 2026',
+    
   },
 ];
 
@@ -206,7 +206,7 @@ export const EXPIRED_CODES: CodeItem[] = [
   { code: 'ValentinesSoon', reward: '3 Skins + Dripstone Totem', status: 'Expired', category: 'event' },
   { code: 'ValentinesOver', reward: 'Expired — Valentine event code', status: 'Expired', category: 'event' },
   { code: 'ROSES', reward: '2x Titles + Bobber', status: 'Expired', category: 'event' },
-  { code: 'Easter2026', reward: 'Easter event code (expired April 18, 2026)', status: 'Expired', category: 'event' },
+  { code: 'Easter2026', reward: 'Easter event code (expired )', status: 'Expired', category: 'event' },
   { code: 'StPatricks', reward: "St Patrick's event code — 2x Rods + Skins", status: 'Expired', category: 'event' },
   { code: 'SeventhOfMarch!', reward: 'Expired — reward not documented by the publisher', status: 'Expired', category: 'event' },
   { code: '4THOFJULY', reward: 'Patriot Rod + Title + Shiny and Sparkling Totems', status: 'Expired', category: 'event' },
@@ -220,8 +220,8 @@ export const EXPIRED_CODES: CodeItem[] = [
   { code: 'FISCHFRIGHTNOW', reward: 'Expired — Halloween event code', status: 'Expired', category: 'event' },
   { code: 'FISCHFEST', reward: 'Expired — Fischfest event bundle', status: 'Expired', category: 'event' },
   { code: 'FISCHANNIVERSARY', reward: 'Anniversary cake item', status: 'Expired', category: 'event' },
-  { code: 'JOUNCE', reward: 'Team-choice code (expired March 8, 2026 — JOUNCE or BIGGLE, pick one)', status: 'Expired', category: 'event' },
-  { code: 'BIGGLE', reward: 'Team-choice code (expired March 8, 2026 — JOUNCE or BIGGLE, pick one)', status: 'Expired', category: 'event' },
+  { code: 'JOUNCE', reward: 'Team-choice code (expired — JOUNCE or BIGGLE, pick one)', status: 'Expired', category: 'event' },
+  { code: 'BIGGLE', reward: 'Team-choice code (expired — JOUNCE or BIGGLE, pick one)', status: 'Expired', category: 'event' },
   { code: 'BLOOPWHISTLE2', reward: 'Expired — reward not documented by the publisher', status: 'Expired', category: 'event' },
   { code: 'BRICK', reward: 'Expired — reward not documented by the publisher', status: 'Expired', category: 'event' },
   { code: 'CHUD', reward: 'Expired — reward not documented by the publisher', status: 'Expired', category: 'event' },
@@ -263,8 +263,8 @@ export const EXPIRED_CODES: CodeItem[] = [
   { code: 'HeadStart', reward: 'Cash + Instant Catchers', status: 'Expired', category: 'event' },
   { code: 'HEADSTART', reward: 'Expired — reward not documented by the publisher', status: 'Expired', category: 'event' },
   { code: 'FRIENDXP', reward: 'Expired — friend XP boost code', status: 'Expired', category: 'event' },
-  { code: 'DAILYSHOP', reward: 'Daily Shop event bundle (expired July 19, 2026)', status: 'Expired', category: 'event' },
-  { code: 'DARKHEART', reward: 'Darkheart event bundle (expired July 19, 2026)', status: 'Expired', category: 'event' },
+  { code: 'DAILYSHOP', reward: 'Daily Shop event bundle (expired )', status: 'Expired', category: 'event' },
+  { code: 'DARKHEART', reward: 'Darkheart event bundle (expired )', status: 'Expired', category: 'event' },
 ];
 
 // 2. Fishing Rods Tier List Data

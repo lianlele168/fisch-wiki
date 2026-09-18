@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     canonical: '/fish-values',
   },
 
-  title: 'Roblox Fisch Fish Values List (September 2026) — Prices & Rarities',
+  title: 'Roblox Fisch Fish Values List — Prices & Rarities',
   description: 'Full Roblox Fisch fish price list and rarity values. Find base selling prices, preferred weather, and spawn locations for all species.',
   keywords: ['fisch values list', 'fisch fish values', 'roblox fisch fish prices', 'fisch fish rarity']
 };

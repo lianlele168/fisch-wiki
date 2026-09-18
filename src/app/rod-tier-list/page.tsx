@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     canonical: '/rod-tier-list',
   },
 
-  title: 'Roblox Fisch Rod Tier List (September 2026) — Best Rods Ranked',
+  title: 'Roblox Fisch Rod Tier List — Best Rods Ranked',
   description: 'Complete Roblox Fisch Fishing Rod Tier List. Compare Supreme Rod, Destiny Rod, Magma Rod, and Carbon Rod prices, lure speeds, and luck stats.',
   keywords: ['fisch rod tier list', 'best rod in fisch', 'fisch supreme rod', 'fisch magma rod', 'roblox fisch rods']
 };

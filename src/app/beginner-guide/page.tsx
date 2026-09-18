@@ -77,7 +77,7 @@ export default function BeginnerGuidePage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    dateModified: '2026-09-15',
+
     author: {
       '@type': 'Person',
       name: 'Alex Vance',
@@ -119,7 +119,6 @@ export default function BeginnerGuidePage() {
           role="Lead Fisch Theorycrafter"
           experience="250+ Hours In-Game Verified"
           patchVersion="Patch v1.48 Verified"
-          lastUpdated="September 2026"
           editorialNote="All drop rates, rod tier rankings, and secret coordinates have been physically cross-verified in-game across 500+ catch cycles."
         />
 

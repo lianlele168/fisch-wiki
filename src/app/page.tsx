@@ -42,7 +42,7 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto text-center space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-xs font-semibold shadow-inner">
             <Flame className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
-            <span>Updated for September 2026 • 100% Verified Roblox Data</span>
+            <span>Updated for • 100% Verified Roblox Data</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">

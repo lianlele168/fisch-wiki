@@ -3,23 +3,21 @@ import { Gift, CheckCircle2, AlertCircle, HelpCircle, Users, Search } from 'luci
 import { ACTIVE_CODES, EXPIRED_CODES } from '@/data/wikiData';
 import CopyButton from '@/components/CopyButton';
 import AuthorCard from '@/components/AuthorCard';
-import LastVerified, { CODES_LAST_VERIFIED } from '@/components/LastVerified';
 
-const LAST_VERIFIED = CODES_LAST_VERIFIED.label;
 
 export const metadata: Metadata = {
   alternates: {
     canonical: '/codes',
   },
 
-  title: 'Roblox Fisch Codes (September 2026) — 5 Working Codes + 133 Expired',
+  title: 'Roblox Fisch Codes — 5 Working Codes + 133 Expired',
   description:
-    'All 5 working Roblox Fisch codes checked on September 18, 2026, with exact rewards, level requirements and expiry dates — plus a 133-entry archive of dead codes so you never paste an expired string again.',
+    'All 5 working Roblox Fisch codes checked on, with exact rewards, level requirements and expiry dates — plus a 133-entry archive of dead codes so you never paste an expired string again.',
   keywords: [
     'fisch codes',
     'roblox fisch codes',
     'active fisch codes',
-    'fisch codes september 2026',
+    'fisch codes ',
     'fisch expired codes',
     'codes for fisch',
     'fisch code not working',
@@ -42,7 +40,7 @@ const faqs = [
   },
   {
     q: 'How many Fisch codes actually work right now?',
-    a: 'Five strings redeemed successfully as of September 18, 2026. Three of them (SCARLET, TemporarySubmarine and CARBON) are long-running codes that carry published expiry dates, and two (LittleBudlingUpdate and SkycrestIsInTheSky) are recent update codes. A page claiming 15 or 18 working Fisch codes is almost certainly padding its list with expired weekly codes — we keep a full archive of those below instead of pretending they work.',
+    a: 'Five strings redeemed successfully as of . Three of them (SCARLET, TemporarySubmarine and CARBON) are long-running codes that carry published expiry dates, and two (LittleBudlingUpdate and SkycrestIsInTheSky) are recent update codes. A page claiming 15 or 18 working Fisch codes is almost certainly padding its list with expired weekly codes — we keep a full archive of those below instead of pretending they work.',
   },
   {
     q: 'Do Fisch codes have level requirements?',
@@ -62,7 +60,7 @@ export default function CodesPage() {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    dateModified: CODES_LAST_VERIFIED.iso,
+
     mainEntity: faqs.map((faq) => ({
       '@type': 'Question',
       name: faq.q,
@@ -107,7 +105,7 @@ export default function CodesPage() {
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Working Roblox Fisch Codes (September 2026)',
+    name: 'Working Roblox Fisch Codes ',
     numberOfItems: ACTIVE_CODES.length,
     itemListElement: ACTIVE_CODES.map((c, index) => ({
       '@type': 'ListItem',
@@ -194,12 +192,12 @@ export default function CodesPage() {
 
       {/* Header Banner */}
       <div className="space-y-4 text-center sm:text-left border-b border-slate-800 pb-8">
-        <LastVerified />
+        
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-          Roblox <span className="gradient-text-gold">Fisch Codes</span> (September 2026)
+          Roblox <span className="gradient-text-gold">Fisch Codes</span> 
         </h1>
         <p className="text-slate-300 text-sm max-w-2xl leading-relaxed">
-          {ACTIVE_CODES.length} working Fisch codes checked on {LAST_VERIFIED} — with the exact cash, boat, skin and totem payouts, the level gate each code needs, and its published expiry date. Below that sits an archive of {EXPIRED_CODES.length} dead strings, so you can confirm in one glance whether the code from an old video is worth typing.
+          {ACTIVE_CODES.length} working Fisch codes checked on {} — with the exact cash, boat, skin and totem payouts, the level gate each code needs, and its published expiry date. Below that sits an archive of {EXPIRED_CODES.length} dead strings, so you can confirm in one glance whether the code from an old video is worth typing.
         </p>
       </div>
 
@@ -213,7 +211,7 @@ export default function CodesPage() {
           Fisch does not handle codes the way most Roblox games do. The developer ships a fresh code with almost every weekly update and then <strong className="text-white">retires it roughly 24 hours later</strong>. Documented examples: <strong className="text-rose-300">CREWS</strong> was redeemable June 6&ndash;7, <strong className="text-rose-300">Sovereign</strong> May 9&ndash;10, and <strong className="text-rose-300">LivyatanAndCompanions</strong> May 30&ndash;31. Each of those existed for a single day.
         </p>
         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-          That is why long Fisch code lists are a warning sign rather than a selling point. When we audited the major outlets on {LAST_VERIFIED}, the largest list advertised 18 &ldquo;working&rdquo; codes &mdash; but 12 of them were March and April 2026 weekly drops that died months ago, and its own expired section listed <strong className="text-white">MerryFischmas2</strong> and <strong className="text-white">ALIENS</strong> twice each while still claiming they worked. We would rather tell you there are five than pad the page with fourteen dead strings.
+          That is why long Fisch code lists are a warning sign rather than a selling point. When we audited the major outlets on {}, the largest list advertised 18 &ldquo;working&rdquo; codes &mdash; but 12 of them were March and weekly drops that died months ago, and its own expired section listed <strong className="text-white">MerryFischmas2</strong> and <strong className="text-white">ALIENS</strong> twice each while still claiming they worked. We would rather tell you there are five than pad the page with fourteen dead strings.
         </p>
         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
           The practical rule: unredeemed weekly codes older than a couple of days are dead. Only the three long-running codes below are safe to come back for.
@@ -350,8 +348,8 @@ export default function CodesPage() {
         authorName="Alex Vance"
         role="Fisch Codes & Mechanics Analyst"
         experience="600+ hours fished since launch"
-        patchVersion="Checked against the September 2026 build"
-        lastUpdated={LAST_VERIFIED}
+        patchVersion="Checked against the build"
+        lastUpdated={}
         editorialNote="Every code on this page is cross-checked against the official Fisch Discord announcements, the developer's X account, and at least two independent guides before it is listed as active — and dead strings are moved to the archive rather than quietly deleted."
       />
     </div>
