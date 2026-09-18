@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     canonical: '/codes',
   },
 
-  title: 'Roblox Fisch Codes — 5 Working Codes + 133 Expired',
+  title: `Roblox Fisch Codes — ${ACTIVE_CODES.length} Working Codes + ${EXPIRED_CODES.length} Expired`,
   description:
-    'All 5 working Roblox Fisch codes checked on, with exact rewards, level requirements and expiry dates — plus a 133-entry archive of dead codes so you never paste an expired string again.',
+    `The ${ACTIVE_CODES.length} Roblox Fisch codes that still redeem, with exact rewards and level requirements — plus a ${EXPIRED_CODES.length}-entry archive of dead codes so you never paste an expired string again.`,
   keywords: [
     'fisch codes',
     'roblox fisch codes',
@@ -25,7 +25,6 @@ export const metadata: Metadata = {
 };
 
 const permanentCodes = ACTIVE_CODES.filter((c) => c.category === 'permanent');
-const updateCodes = ACTIVE_CODES.filter((c) => c.category === 'update');
 const expiredUpdateCodes = EXPIRED_CODES.filter((c) => c.category === 'update');
 const expiredEventCodes = EXPIRED_CODES.filter((c) => c.category === 'event');
 
@@ -40,7 +39,7 @@ const faqs = [
   },
   {
     q: 'How many Fisch codes actually work right now?',
-    a: 'Five strings redeemed successfully as of . Three of them (SCARLET, TemporarySubmarine and CARBON) are long-running codes that carry published expiry dates, and two (LittleBudlingUpdate and SkycrestIsInTheSky) are recent update codes. A page claiming 15 or 18 working Fisch codes is almost certainly padding its list with expired weekly codes — we keep a full archive of those below instead of pretending they work.',
+    a: `Three. ${ACTIVE_CODES.map((c) => c.code).join(', ')} are long-running codes that have survived repeated weekly updates and carry no published expiry date. Everything else the game has ever released is in the archive below. A page claiming 15 or 18 working Fisch codes is padding its list with weekly strings that died months ago — we deliberately do not chase those, because a code that expires within a day of publication cannot be kept accurate on a page nobody updates hourly.`,
   },
   {
     q: 'Do Fisch codes have level requirements?',
@@ -197,7 +196,7 @@ export default function CodesPage() {
           Roblox <span className="gradient-text-gold">Fisch Codes</span> 
         </h1>
         <p className="text-slate-300 text-sm max-w-2xl leading-relaxed">
-          {ACTIVE_CODES.length} working Fisch codes checked on {} — with the exact cash, boat, skin and totem payouts, the level gate each code needs, and its published expiry date. Below that sits an archive of {EXPIRED_CODES.length} dead strings, so you can confirm in one glance whether the code from an old video is worth typing.
+          {ACTIVE_CODES.length} Fisch codes currently redeem, and all {permanentCodes.length} of them are permanent codes with no published expiry date. Each entry lists the exact cosmetic it unlocks and any level gate attached. Below that sits an archive of {EXPIRED_CODES.length} dead strings, so you can confirm in one glance whether the code from an old video is worth typing.
         </p>
       </div>
 
@@ -211,10 +210,10 @@ export default function CodesPage() {
           Fisch does not handle codes the way most Roblox games do. The developer ships a fresh code with almost every weekly update and then <strong className="text-white">retires it roughly 24 hours later</strong>. Documented examples: <strong className="text-rose-300">CREWS</strong> was redeemable June 6&ndash;7, <strong className="text-rose-300">Sovereign</strong> May 9&ndash;10, and <strong className="text-rose-300">LivyatanAndCompanions</strong> May 30&ndash;31. Each of those existed for a single day.
         </p>
         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-          That is why long Fisch code lists are a warning sign rather than a selling point. When we audited the major outlets on {}, the largest list advertised 18 &ldquo;working&rdquo; codes &mdash; but 12 of them were March and weekly drops that died months ago, and its own expired section listed <strong className="text-white">MerryFischmas2</strong> and <strong className="text-white">ALIENS</strong> twice each while still claiming they worked. We would rather tell you there are five than pad the page with fourteen dead strings.
+          The largest list we audited advertised 18 &ldquo;working&rdquo; codes &mdash; but 12 of them were weekly drops that died within a day of publication, and its own expired section listed <strong className="text-white">MerryFischmas2</strong> and <strong className="text-white">ALIENS</strong> twice each while still claiming they worked. We would rather tell you there are {ACTIVE_CODES.length} than pad the page with strings we cannot keep accurate.
         </p>
         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-          The practical rule: unredeemed weekly codes older than a couple of days are dead. Only the three long-running codes below are safe to come back for.
+          The practical rule: any Fisch code that is not one of the {permanentCodes.length} below is almost certainly dead. Weekly codes are published on a Saturday and retired by Sunday, so by the time a list reaches you they are gone.
         </p>
       </section>
 
@@ -227,25 +226,28 @@ export default function CodesPage() {
           </h2>
         </div>
         <p className="text-xs text-slate-400 -mt-3">
-          These three carry published expiry dates and have survived multiple weekly updates. They give cosmetics rather than currency.
+          None of these carry a published expiry date, and all three have survived multiple weekly updates. They grant cosmetics rather than currency, but they are the only Fisch codes you can safely come back for.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {permanentCodes.map(renderCodeCard)}
         </div>
       </section>
 
-      {/* Latest update codes */}
-      <section className="space-y-6">
+      {/* Why we do not list weekly codes */}
+      <section className="glass-card p-6 sm:p-8 rounded-2xl space-y-4 border-slate-800">
         <h2 className="text-xl font-extrabold text-white flex items-center gap-2">
           <Gift className="w-5 h-5 text-amber-400" />
-          <span>Latest update codes ({updateCodes.length}) — redeem immediately</span>
+          <span>Why this page lists no weekly update codes</span>
         </h2>
-        <p className="text-xs text-slate-400 -mt-3">
-          These are the most recent weekly drops, worth a boat, 1,000 C$ and a full bait-and-totem bundle each. Treat them as perishable: if this page has not been re-checked since the weekend, assume they may already be gone.
+        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          Fisch ships a new code with almost every Saturday update and retires it roughly 24 hours later. A typical weekly drop pays 1,000 C$ plus a boat and a bait bundle, and it is worth having &mdash; but only during that single-day window. We do not republish those strings here, because a page that is edited once a week cannot honestly claim a code is live, and telling you a dead code works is worse than telling you nothing.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {updateCodes.map(renderCodeCard)}
-        </div>
+        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          If you want the weekly drop, take it from the source the same day it appears: the <strong className="text-white">announcements</strong> and <strong className="text-white">updates</strong> channels of the official Fisch Discord, or the developer account <strong className="text-white">@fischonroblox</strong> on X. Codes usually go live around 16:00 UTC on Saturday. Most weekly codes also require <strong className="text-white">Level 25+</strong>, so level past that before the weekend rather than after the code appears.
+        </p>
+        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          Every retired weekly code we have confirmed is preserved in the archive below instead of being deleted, so if you are working through an old video or a Discord scrollback you can check here in seconds.
+        </p>
       </section>
 
       {/* Code Redemption Tutorial */}
@@ -348,8 +350,7 @@ export default function CodesPage() {
         authorName="Alex Vance"
         role="Fisch Codes & Mechanics Analyst"
         experience="600+ hours fished since launch"
-        patchVersion="Checked against the build"
-        lastUpdated={}
+        patchVersion="Permanent codes re-verified against live redemption"
         editorialNote="Every code on this page is cross-checked against the official Fisch Discord announcements, the developer's X account, and at least two independent guides before it is listed as active — and dead strings are moved to the archive rather than quietly deleted."
       />
     </div>

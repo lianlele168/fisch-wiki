@@ -96,25 +96,6 @@ export const ACTIVE_CODES: CodeItem[] = [
     addedDate: '',
     expires: 'No published expiry',
     category: 'permanent',
-    
-  },
-  {
-    code: 'LittleBudlingUpdate',
-    reward: "1,000 C$ + Walrus boat + 5x Icy Fisch'n Dots + 5x Coral Pearl + 5x Cotton Candy Pieces + 5x Tropical Fruit Mix + 1x Random Totem",
-    status: 'Active',
-    addedDate: '',
-    levelReq: 'Level 25+',
-    isNew: true,
-    category: 'update',
-    
-  },
-  {
-    code: 'SkycrestIsInTheSky',
-    reward: "1,000 C$ + Banana boat + 5x Icy Fisch'n Dots + 5x Coral Pearl + 5x Cotton Candy Pieces + 5x Tropical Fruit Mix + 1x Random Totem",
-    status: 'Active',
-    levelReq: 'Level 25+',
-    category: 'update',
-    
   },
 ];
 
@@ -122,6 +103,8 @@ export const ACTIVE_CODES: CodeItem[] = [
 // silently delete dead strings — and then re-list them a year later as "new".
 export const EXPIRED_CODES: CodeItem[] = [
   // --- 2026 weekly update codes (each lived roughly 24 hours) ---
+  { code: 'SkycrestIsInTheSky', reward: "1,000 C$ + Banana boat + 5x Icy Fisch'n Dots + 5x Coral Pearl + 5x Cotton Candy Pieces + 5x Tropical Fruit Mix + 1x Random Totem", status: 'Expired', levelReq: 'Level 25+', category: 'update' },
+  { code: 'LittleBudlingUpdate', reward: "1,000 C$ + Walrus boat + 5x Icy Fisch'n Dots + 5x Coral Pearl + 5x Cotton Candy Pieces + 5x Tropical Fruit Mix + 1x Random Totem", status: 'Expired', levelReq: 'Level 25+', category: 'update' },
   { code: 'SkycrestNextWeek', reward: "1,000 C$ + Little Sei Whale boat + 5x Icy Fisch'n Dots + 5x Coral Pearl + 5x Cotton Candy Pieces + 5x Tropical Fruit Mix + 1x Random Totem", status: 'Expired', levelReq: 'Level 25+', category: 'update' },
   { code: 'ShootingStars', reward: '1,000 C$ + XL Meteoric Rod + bait bundle + 1x Random Hunt Totem', status: 'Expired', levelReq: 'Level 25+', category: 'update' },
   { code: 'CollectMyPufferfish', reward: '1,000 C$ + Giant Jetski + bait bundle + 1x Random Hunt Totem', status: 'Expired', levelReq: 'Level 25+', category: 'update' },

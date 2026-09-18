@@ -60,7 +60,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-slate-950 bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 rounded-xl shadow-lg shadow-amber-500/20 hover:scale-[1.02] active:scale-95 transition-all"
             >
               <Gift className="w-4 h-4" />
-              <span>Get Active Codes (5)</span>
+              <span>Get Active Codes ({ACTIVE_CODES.length})</span>
             </Link>
 
             <Link
@@ -175,7 +175,7 @@ export default function HomePage() {
             <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <Zap className="w-5 h-5 text-amber-400" />
-                <h2 className="text-xl font-bold text-white">Latest Active Fisch Codes</h2>
+                <h2 className="text-xl font-bold text-white">Working Fisch Codes</h2>
               </div>
               <p className="text-xs text-slate-400">Click &apos;Copy&apos; to instantly copy code to your clipboard.</p>
             </div>
