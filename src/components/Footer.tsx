@@ -71,6 +71,9 @@ export default function Footer() {
           <span>for Roblox Anglers</span>
         </p>
       </div>
+      <div className="max-w-7xl mx-auto mt-4 text-[11px] text-slate-600 text-center">
+        <p>Content AI-assisted, human-reviewed · Data sources cited on page · Contact: lianlele168@gmail</p>
+      </div>
     </footer>
   );
 }

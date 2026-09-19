@@ -347,9 +347,9 @@ export default function CodesPage() {
       </section>
 
       <AuthorCard
-        authorName="Alex Vance"
-        role="Fisch Codes & Mechanics Analyst"
-        experience="600+ hours fished since launch"
+        authorName="Hlele"
+        role="Editor"
+        experience="AI-assisted research, human-reviewed"
         patchVersion="Permanent codes re-verified against live redemption"
         editorialNote="Every code on this page is cross-checked against the official Fisch Discord announcements, the developer's X account, and at least two independent guides before it is listed as active — and dead strings are moved to the archive rather than quietly deleted."
       />

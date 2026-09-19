@@ -10,12 +10,12 @@ interface AuthorCardProps {
 }
 
 export default function AuthorCard({
-  authorName = 'Alex Vance',
-  role = 'Lead Mechanics Analyst',
-  experience = '250+ Hours In-Game Verified',
+  authorName = 'Hlele',
+  role = 'Editor',
+  experience = 'AI-assisted research, human-reviewed',
   patchVersion = 'Patch v1.48 Verified',
   lastUpdated = '',
-  editorialNote = 'All drop rates, luck multipliers, and mathematical formulas are reverse-engineered and cross-checked against live in-game logs.',
+  editorialNote = 'All drop rates, luck multipliers, and mathematical formulas are compiled with AI-assisted research and cross-checked against multiple community sources; any figure we could not independently confirm is explicitly labeled as unverified.',
 }: AuthorCardProps) {
   return (
     <div className="w-full rounded-2xl bg-gray-900/50 border border-white/10 p-4 sm:p-5 backdrop-blur-md my-6">
