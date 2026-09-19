@@ -14,6 +14,38 @@ export default function HomePage() {
   // Featured rods: the four highest verified Luck stats (Destiny Rod, Merlin's Staff, Fortune Rod, Lucky Rod).
   const topRods = [...RODS_DATA].sort((a, b) => parseInt(b.luck.replace(/[^0-9-]/g, ''), 10) - parseInt(a.luck.replace(/[^0-9-]/g, ''), 10)).slice(0, 4);
 
+  // Recent official game updates (last 30 days), sourced from the Official Fisch Wiki version history.
+  const recentUpdates = [
+    {
+      date: 'September 14, 2026',
+      version: 'v2.01.1 — Fischer\'s Journal',
+      summary: 'Minor patch following the Budling Companion update, adding Fischer\'s Journal content to the game.',
+      source: 'Official Fisch Wiki — Version History',
+      sourceUrl: 'https://fischipedia.org/wiki/Version_History'
+    },
+    {
+      date: 'September 12, 2026',
+      version: 'v2.01.0 — Budling Companion',
+      summary: 'New companion update that bumped the game to Version 2.01.0, with two livepatches (2.01.0.1 / 2.01.0.2) shipped the same day.',
+      source: 'Official Fisch Wiki — Version History',
+      sourceUrl: 'https://fischipedia.org/wiki/Version_History'
+    },
+    {
+      date: 'September 8, 2026',
+      version: 'v2.0.2 & v2.0.2.1',
+      summary: 'New additions and bug fixes, followed by a balance-change patch the same day.',
+      source: 'Official Fisch Wiki — Version History',
+      sourceUrl: 'https://fischipedia.org/wiki/Version_History'
+    },
+    {
+      date: 'September 5, 2026',
+      version: 'v2.0.0 — Skycrest',
+      summary: 'Major content update that bumped Fisch to Version 2.0.0, adding the Skycrest island content, Ancient Idols, the Abaia hunt, and new rods including a spear and harpoon gun.',
+      source: 'Official Fisch Wiki — Version History',
+      sourceUrl: 'https://fischipedia.org/wiki/Version_History'
+    }
+  ];
+
   const faqs = [
     {
       q: 'How do I redeem active codes in Roblox Fisch?',
@@ -252,6 +284,40 @@ export default function HomePage() {
               ))}
             </tbody>
           </table>
+        </div>
+      </section>
+
+      {/* Recent Official Game Updates */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div>
+          <div className="flex items-center gap-2">
+            <BookOpen className="w-5 h-5 text-cyan-400" />
+            <h2 className="text-xl sm:text-2xl font-bold text-white">Recent Game Updates</h2>
+          </div>
+          <p className="text-xs text-slate-400 mt-1">Last 30 days of official Fisch versions. Sourced from the Official Fisch Wiki version history — we link every source.</p>
+        </div>
+
+        <div className="space-y-4">
+          {recentUpdates.map((u) => (
+            <div key={u.version} className="glass-card p-5 rounded-xl space-y-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="px-2 py-0.5 text-[10px] font-bold bg-cyan-500/15 text-cyan-300 rounded border border-cyan-500/30">
+                  {u.date}
+                </span>
+                <span className="text-sm font-bold text-white">{u.version}</span>
+              </div>
+              <p className="text-xs text-slate-300 leading-relaxed">{u.summary}</p>
+              <a
+                href={u.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[11px] font-semibold text-cyan-400 hover:text-cyan-300"
+              >
+                <span>Source: {u.source}</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+          ))}
         </div>
       </section>
 
