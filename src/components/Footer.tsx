@@ -14,7 +14,7 @@ export default function Footer() {
             <span className="text-lg font-bold text-white tracking-tight">Fisch Wiki & Database</span>
           </div>
           <p className="text-xs leading-relaxed text-slate-400 max-w-md">
-            The ultimate fan-made Roblox Fisch guide and database. Find active codes, fishing rod tier lists, secret island coordinates, weather totems, and fish values.
+            The fan-made Roblox Fisch guide built on verified data. Find active codes, verified fishing rod stats, real fish prices, and every location on the official map.
           </p>
           <p className="text-[11px] text-slate-500">
             Disclaimer: Fisch Wiki is an independent community wiki created for educational and entertainment purposes. We are not affiliated with or endorsed by Roblox Corporation or Woozy NATE.
@@ -27,8 +27,7 @@ export default function Footer() {
           <ul className="space-y-2 text-xs">
             <li><Link href="/codes" className="hover:text-cyan-400 transition-colors">Roblox Fisch Codes</Link></li>
             <li><Link href="/rod-tier-list" className="hover:text-cyan-400 transition-colors">Fishing Rod Tier List</Link></li>
-            <li><Link href="/locations" className="hover:text-cyan-400 transition-colors">Desolate Deep Location</Link></li>
-            <li><Link href="/enchantments-totems" className="hover:text-cyan-400 transition-colors">Enchants & Totems Guide</Link></li>
+            <li><Link href="/locations" className="hover:text-cyan-400 transition-colors">Locations Guide</Link></li>
             <li><Link href="/fish-values" className="hover:text-cyan-400 transition-colors">Fish Prices & Values</Link></li>
             <li><Link href="/beginner-guide" className="hover:text-cyan-400 transition-colors">Beginner Fast EXP Guide</Link></li>
           </ul>

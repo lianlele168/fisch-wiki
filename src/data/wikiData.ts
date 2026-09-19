@@ -1,3 +1,11 @@
+// ============================================================================
+// DATA INTEGRITY NOTE
+// Rod, fish and location data below is restricted to entries verified against
+// fischipedia.org (the official Fisch Wiki) in September 2026.
+// Anything that could not be verified was DELETED, not guessed.
+// Fields that sources do not document are marked "Not documented".
+// ============================================================================
+
 export interface CodeItem {
   code: string;
   reward: string;
@@ -17,6 +25,11 @@ export interface CodeItem {
 
 export interface RodItem {
   name: string;
+  /**
+   * Editorial convenience tier, derived MECHANICALLY from the verified Luck
+   * stat: S+ >= 200%, S >= 90%, A >= 40%, B >= 0%, F < 0%.
+   * This is our own ranking, NOT official game data.
+   */
   tier: 'S+' | 'S' | 'A' | 'B' | 'F';
   price: string;
   lureSpeed: string;
@@ -31,38 +44,23 @@ export interface RodItem {
 
 export interface LocationItem {
   name: string;
-  coordinates: string;
-  reqLevel: string;
-  reqGear: string;
-  description: string;
+  category: 'Major' | 'Sub-Location';
+  /** Short verified fact about this location, or an honest "not documented" note. */
+  note: string;
+  /** Verified rods sold / obtainable here. Empty when not documented. */
+  rodsSold: string[];
+  /** Verified fish species tied to this location in the official fish tables. Empty when not documented. */
   notableFish: string[];
-  tips: string;
-}
-
-export interface EnchantmentItem {
-  name: string;
-  tier: 'S' | 'A' | 'B';
-  effect: string;
-  multiplier: string;
-  description: string;
-}
-
-export interface TotemItem {
-  name: string;
-  price: string;
-  location: string;
-  coordinates: string;
-  effect: string;
-  description: string;
 }
 
 export interface FishItem {
   name: string;
-  rarity: 'Mythical' | 'Legendary' | 'Rare' | 'Uncommon' | 'Common';
-  basePrice: string;
-  preferredWeather: string;
-  preferredSeason: string;
+  rarity: 'Mythical' | 'Legendary' | 'Common';
   location: string;
+  /** Average sale price per kg in C$, as listed on the official fish tables. */
+  pricePerKg: string;
+  /** Average sale price of one catch in C$. "Not documented" when the source table omits it. */
+  avgValue: string;
 }
 
 // 1. Active & Expired Codes
@@ -78,7 +76,7 @@ export const ACTIVE_CODES: CodeItem[] = [
     addedDate: '',
     expires: '',
     category: 'permanent',
-    
+
   },
   {
     code: 'TemporarySubmarine',
@@ -87,7 +85,7 @@ export const ACTIVE_CODES: CodeItem[] = [
     addedDate: '',
     expires: '',
     category: 'permanent',
-    
+
   },
   {
     code: 'CARBON',
@@ -250,255 +248,388 @@ export const EXPIRED_CODES: CodeItem[] = [
   { code: 'DARKHEART', reward: 'Darkheart event bundle (expired )', status: 'Expired', category: 'event' },
 ];
 
-// 2. Fishing Rods Tier List Data
+// 2. Fishing Rods — 20 entries, all stats verified against fischipedia.org/wiki/Rods
+// (plus the dedicated Destiny Rod and Magma Rod pages), September 2026.
+// Corrections vs the old fabricated dataset:
+//   - Destiny Rod: Lure Speed is 45% (was wrongly listed as +70%).
+//   - Magma Rod: FREE reward from the Orc quest at Roslit Bay (was wrongly listed at $25,000).
+//   - Training Rod: Luck is -70% (a penalty, not a bonus).
 export const RODS_DATA: RodItem[] = [
   {
-    name: 'Supreme Rod',
-    tier: 'S+',
-    price: '$150,000',
-    lureSpeed: '+80%',
-    luck: '+150%',
+    name: 'Flimsy Rod',
+    tier: 'B',
+    price: 'Free (starter rod)',
+    lureSpeed: '0%',
+    luck: '0%',
+    control: '0',
+    resilience: '0%',
+    maxKg: '10.4kg',
+    location: 'Given to every new player',
+    description: 'The rod every account starts with. No bonuses of any kind.',
+    recommendedFor: 'Your very first casts before you can afford a shop rod.'
+  },
+  {
+    name: 'Training Rod',
+    tier: 'F',
+    price: 'C$300',
+    lureSpeed: '10%',
+    luck: '-70%',
     control: '0.2',
-    resilience: '0.15',
-    maxKg: '10,000kg',
-    location: 'Roslit Volcano Secret Vendor',
-    description: 'The pinnacle of fishing technology in Fisch. Massive luck and lure speed boost.',
-    recommendedFor: 'End-game players hunting Mythical Megalodons and Secret Fish.'
+    resilience: '20%',
+    maxKg: '9kg',
+    location: 'Moosewood rod shop',
+    description: 'Cheap practice rod. Its Luck is a -70% PENALTY, so it is worse than the free Flimsy Rod for finding rare fish — but it has the highest Control (0.2) of any early rod.',
+    recommendedFor: 'Learning the reeling minigame, not for hunting rares.'
   },
   {
-    name: 'Destiny Rod',
-    tier: 'S+',
-    price: '$190,000',
-    lureSpeed: '+70%',
-    luck: '+250%',
-    control: '0.15',
-    resilience: '0.1',
-    maxKg: '15,000kg',
-    location: 'Caster NPC (Sunstone Peak)',
-    description: 'Provides the highest raw Luck multiplier in the entire game for catching legendary species.',
-    recommendedFor: 'Trophy collectors and rare species completists.'
+    name: 'Plastic Rod',
+    tier: 'B',
+    price: 'C$750',
+    lureSpeed: '20%',
+    luck: '15%',
+    control: '0',
+    resilience: '10%',
+    maxKg: '100kg',
+    location: 'Moosewood rod shop',
+    description: 'Entry-level upgrade with modest positive stats across the board.',
+    recommendedFor: 'First C$ purchase if you want a small all-round bump.'
   },
   {
-    name: 'Magma Rod',
+    name: 'Carbon Rod',
+    tier: 'B',
+    price: 'C$2,000',
+    lureSpeed: '15%',
+    luck: '25%',
+    control: '0.05',
+    resilience: '10%',
+    maxKg: '600kg',
+    location: 'Moosewood rod shop',
+    description: 'Early mid-game rod: 25% Luck and a 600kg limit for only C$2,000.',
+    recommendedFor: 'Players outgrowing the 10.4kg Flimsy limit on a tight budget.'
+  },
+  {
+    name: 'Long Rod',
+    tier: 'A',
+    price: 'C$3,000',
+    lureSpeed: '20%',
+    luck: '80%',
+    control: '-0.1',
+    resilience: '20%',
+    maxKg: '250kg',
+    location: 'Moosewood rod shop',
+    description: 'High Luck (80%) but negative Control (-0.1), making the minigame harder.',
+    recommendedFor: 'Luck-focused players who are confident in the minigame.'
+  },
+  {
+    name: 'Fast Rod',
+    tier: 'B',
+    price: 'C$4,000',
+    lureSpeed: '70%',
+    luck: '10%',
+    control: '0.05',
+    resilience: '-5%',
+    maxKg: '175kg',
+    location: 'Moosewood rod shop',
+    description: '70% Lure Speed — one of the fastest early bite rates in the game — with small Resilience penalty.',
+    recommendedFor: 'Volume fishing and fast leveling at Moosewood.'
+  },
+  {
+    name: 'Lucky Rod',
     tier: 'S',
-    price: '$25,000',
-    lureSpeed: '+40%',
-    luck: '+75%',
+    price: 'C$4,500',
+    lureSpeed: '20%',
+    luck: '177%',
+    control: '0.07',
+    resilience: '7%',
+    maxKg: '175kg',
+    location: 'Moosewood rod shop',
+    description: '177% Luck for just C$4,500 — the best Luck-per-C$ ratio of any verified rod.',
+    recommendedFor: 'Early rarity hunting before you can reach Roslit Bay.'
+  },
+  {
+    name: 'Steady Rod',
+    tier: 'B',
+    price: 'C$7,000',
+    lureSpeed: '-60%',
+    luck: '35%',
     control: '0.1',
-    resilience: '0.05',
-    maxKg: '2,500kg',
-    location: 'Roslit Bay Volcano Cave',
-    description: 'Heat-resistant rod. The ONLY rod that can fish directly in boiling volcanic lava.',
-    recommendedFor: 'Volcano fishing and hunting Magma Shark / Lava Eel.'
+    resilience: '45%',
+    maxKg: '250,000kg',
+    location: 'Roslit Bay',
+    description: 'Extremely stable: 45% Resilience, 0.1 Control and a massive 250,000kg limit — but a harsh -60% Lure Speed penalty.',
+    recommendedFor: 'Fighting heavy trophy fish that stress the line.'
+  },
+  {
+    name: 'Fortune Rod',
+    tier: 'S+',
+    price: 'C$11,000',
+    lureSpeed: '30%',
+    luck: '200%',
+    control: '0.05',
+    resilience: '10%',
+    maxKg: '3,000kg',
+    location: 'Roslit Bay',
+    description: '200% Luck with no negative stats at C$11,000. One of the strongest mid-game rods verified.',
+    recommendedFor: 'Mid-game players chasing Legendary and Mythical species.'
+  },
+  {
+    name: 'Rapid Rod',
+    tier: 'A',
+    price: 'C$12,000',
+    lureSpeed: '89%',
+    luck: '49%',
+    control: '0',
+    resilience: '9%',
+    maxKg: '800kg',
+    location: 'Roslit Bay',
+    description: '89% Lure Speed — the fastest verified bite rate in the game.',
+    recommendedFor: 'AFK grinding and maximum casts per hour.'
+  },
+  {
+    name: 'Frog Rod',
+    tier: 'S',
+    price: 'C$12,000',
+    lureSpeed: '60%',
+    luck: '100%',
+    control: '0.15',
+    resilience: '15%',
+    maxKg: '650kg',
+    location: 'Mushgrove Swamp (requires 50% Bestiary completion)',
+    description: 'Balanced high-end rod: 60% Lure, 100% Luck and a strong 0.15 Control. Locked behind 50% Bestiary completion.',
+    recommendedFor: 'Experienced players who want speed and luck together.'
+  },
+  {
+    name: 'Magnet Rod',
+    tier: 'B',
+    price: 'C$15,000',
+    lureSpeed: '-10%',
+    luck: '0%',
+    control: '0.05',
+    resilience: '0%',
+    maxKg: '10,000kg',
+    location: 'Terrapin Island',
+    description: 'Specialist rod with 0% Luck and a 10,000kg limit. Its niche is pulling up items rather than rare fish.',
+    recommendedFor: 'Treasure and crate hunting, not rarity fishing.'
   },
   {
     name: 'Nocturnal Rod',
     tier: 'S',
-    price: '$11,000',
-    lureSpeed: '+50%',
-    luck: '+100% (Night)',
-    control: '0.08',
-    resilience: '0.05',
-    maxKg: '1,500kg',
-    location: 'Terrapin Island Witch NPC',
-    description: 'Doubles fishing luck during night time or dark rain weather.',
-    recommendedFor: 'Night fishing sessions paired with Dark Totem.'
+    price: 'C$15,000',
+    lureSpeed: '50%',
+    luck: '90%',
+    control: '0.1',
+    resilience: '15%',
+    maxKg: '10,000kg',
+    location: 'Vertigo',
+    description: 'Strong all-rounder: 50% Lure Speed, 90% Luck and 10,000kg limit.',
+    recommendedFor: 'Players advancing into the Vertigo area.'
   },
   {
-    name: 'Carbon Rod',
+    name: 'Arctic Rod',
     tier: 'A',
-    price: '$2,000',
-    lureSpeed: '+25%',
-    luck: '+45%',
-    control: '0.05',
-    resilience: '0.05',
-    maxKg: '600kg',
-    location: 'Moosewood Rod Merchant',
-    description: 'Best mid-game economy rod. High durability and solid lure speed for fast leveling.',
-    recommendedFor: 'Mid-game players moving from Moosewood to Roslit Bay.'
+    price: 'C$25,000',
+    lureSpeed: '25%',
+    luck: '45%',
+    control: '0.06',
+    resilience: '15%',
+    maxKg: '7,500kg',
+    location: 'Northern Summit',
+    description: 'Mid-tier Northern Expedition rod with solid 7,500kg capacity.',
+    recommendedFor: 'Fishing the frozen Northern Expedition waters.'
   },
   {
-    name: 'Fast Rod',
+    name: 'Coral Rod',
     tier: 'A',
-    price: '$750',
-    lureSpeed: '+90%',
-    luck: '-10%',
+    price: 'C$30,000',
+    lureSpeed: '72%',
+    luck: '74%',
     control: '0.02',
-    resilience: '0.0',
-    maxKg: '200kg',
-    location: 'Moosewood Dock',
-    description: 'Sacrifices luck for ultra-fast bite rates. Perfect for farming EXP quickly.',
-    recommendedFor: 'AFK / Fast EXP leveling up to level 50.'
+    resilience: '40%',
+    maxKg: '10,000kg',
+    location: 'Coral Bastion (requires 50% Bestiary completion)',
+    description: 'Fast (72% Lure) and resilient (40%) with strong 74% Luck. Locked behind 50% Bestiary completion.',
+    recommendedFor: 'Late mid-game players farming around Coral Bastion.'
   },
   {
-    name: 'Flimsy Rod',
-    tier: 'F',
-    price: 'Free',
-    lureSpeed: '0%',
-    luck: '0%',
-    control: '0.0',
-    resilience: '0.0',
-    maxKg: '25kg',
-    location: 'Starter Inventory',
-    description: 'Basic wooden rod given to all new anglers.',
-    recommendedFor: 'First 5 minutes of gameplay in Moosewood.'
-  }
-];
-
-// 3. Locations & Coordinates Data
-export const LOCATIONS_DATA: LocationItem[] = [
-  {
-    name: 'Moosewood (Starter Island)',
-    coordinates: 'X: 380, Y: 135, Z: 230',
-    reqLevel: 'Level 1+',
-    reqGear: 'None',
-    description: 'The starting hub island featuring starter vendors, basic rod shops, and shipwright.',
-    notableFish: ['Bass', 'Salmon', 'Golden Perch', 'Moosewood Trout'],
-    tips: 'Talk to the Angler NPC daily for free fishing quests and quick cash rewards.'
-  },
-  {
-    name: 'Roslit Bay & Volcano',
-    coordinates: 'X: -1480, Y: 130, Z: 680',
-    reqLevel: 'Level 15+',
-    reqGear: 'Wooden Boat or Faster',
-    description: 'Tropical volcanic island. Features both shallow ocean waters and a dangerous lava cave.',
-    notableFish: ['Lava Eel', 'Magma Shark', 'Obsidian Snapper', 'Fire Coral Bass'],
-    tips: 'You MUST equip a Magma Rod to fish inside the volcanic crater.'
-  },
-  {
-    name: 'Snowcap Island',
-    coordinates: 'X: 2600, Y: 135, Z: 2400',
-    reqLevel: 'Level 25+',
-    reqGear: 'Warm Clothes / Speedboat',
-    description: 'Freezing arctic biome featuring icy caverns and winter exclusive species.',
-    notableFish: ['Glacier Cod', 'Frostbite Halibut', 'Polar Bear Shark', 'Ice Crystal Fish'],
-    tips: 'Fish inside the Snowcap Cave for high-value Glacier Cod.'
-  },
-  {
-    name: 'Desolate Deep (Ocean Trench)',
-    coordinates: 'X: -950, Y: -250, Z: -1800',
-    reqLevel: 'Level 40+',
-    reqGear: 'Diving Gear ($3,000) Mandatory',
-    description: 'A deep underwater abyss hidden beneath Sunstone Island. Requires diving gear to avoid drowning.',
-    notableFish: ['Abyssal Anglerfish', 'Depths Crappie', 'Bioluminescent Kraken', 'Giant Squids'],
-    tips: 'Buy Diving Gear at Moosewood before diving! Without it, oxygen depletes in 10 seconds.'
-  },
-  {
-    name: 'Secret Island (Keep Sanctuary)',
-    coordinates: 'X: 1200, Y: 150, Z: -3400',
-    reqLevel: 'Level 50+',
-    reqGear: 'Advanced Navigation / Glider',
-    description: 'Hidden fog-covered sanctuary housing the Enchantment Relic altar.',
-    notableFish: ['Celestial Koi', 'Mythical Leviathan', 'Starlight Flounder'],
-    tips: 'Locate the hidden waterfall cave behind the main stone arch to enter.'
-  }
-];
-
-// 4. Enchantments Data
-export const ENCHANTMENTS_DATA: EnchantmentItem[] = [
-  {
-    name: 'Sea King',
+    name: 'Trident Rod',
     tier: 'S',
-    effect: 'Fish Size +30%',
-    multiplier: '1.4x Sale Price',
-    description: 'Increases caught fish dimensions by 30%, directly scaling up market value.'
+    price: 'C$150,000',
+    lureSpeed: '35%',
+    luck: '150%',
+    control: '0.05',
+    resilience: '0%',
+    maxKg: '6,000kg',
+    location: 'Desolate Deep',
+    description: 'Premium rod with 150% Luck and zero Resilience.',
+    recommendedFor: 'Deep-sea players who can afford their first six-figure rod.'
   },
   {
-    name: 'Hasty',
+    name: 'Destiny Rod',
+    tier: 'S+',
+    price: 'C$190,000',
+    lureSpeed: '45%',
+    luck: '250%',
+    control: '0.2',
+    resilience: '10%',
+    maxKg: '177,777kg',
+    location: 'NPC Caleia at The Arch (requires 350+ Bestiary fish discoveries); NOT a quest reward',
+    description: '250% Luck and the best Control tier (0.2) of any purchasable rod. Correction to our old data: Lure Speed is 45%, not 70%. Requires 350+ Bestiary fish discoveries to buy from Caleia.',
+    recommendedFor: 'Trophy hunters who have completed a large part of the Bestiary.'
+  },
+  {
+    name: 'Rod Of The Depths',
     tier: 'S',
-    effect: 'Lure Speed +40%',
-    multiplier: '1.5x Catch Rate',
-    description: 'Drastically reduces bite waiting time, letting you catch 40% more fish per hour.'
+    price: 'C$750,000',
+    lureSpeed: '75%',
+    luck: '130%',
+    control: '0.15',
+    resilience: '10%',
+    maxKg: '30,000kg',
+    location: 'The Depths',
+    description: 'Late-game rod with fast 75% Lure Speed, 130% Luck and a 30,000kg limit.',
+    recommendedFor: 'Endgame fishing in The Depths and other deep zones.'
   },
   {
-    name: 'Lucky',
+    name: "Merlin's Staff",
+    tier: 'S+',
+    price: 'C$800,000',
+    lureSpeed: '80%',
+    luck: '254%',
+    control: '0.1',
+    resilience: '50%',
+    maxKg: 'Infinite',
+    location: 'Merlin NPC, Sunstone Island',
+    description: 'Highest verified Luck in the game (254%) with 50% Resilience and no weight limit.',
+    recommendedFor: 'Endgame collectors chasing the rarest catches.'
+  },
+  {
+    name: 'Magma Rod',
     tier: 'A',
-    effect: 'Rare Luck +20%',
-    multiplier: '1.2x Rare Luck',
-    description: 'Boosts probability of hooking Rare, Legendary, and Mythical species.'
+    price: 'Free (Orc quest reward)',
+    lureSpeed: '45%',
+    luck: '55%',
+    control: '0.15',
+    resilience: '0%–50% (sources differ)',
+    maxKg: '1,200kg',
+    location: 'Orc NPC quest at Roslit Bay — catch one Pufferfish to complete; NOT a C$25,000 purchase',
+    description: 'FREE quest rod. Catch a single Pufferfish for the Orc at Roslit Bay and it is yours. Can fish in lava pools and has a 35% chance to apply the Ember mutation (3x sale value). Note: Resilience is listed as 0% on the rod page and 50% on the rods table — sources disagree.',
+    recommendedFor: 'Every player: a free 55% Luck rod with a built-in 3x value mutation.'
   },
-  {
-    name: 'Abyssal',
-    tier: 'B',
-    effect: 'Deep Water Bonus +35%',
-    multiplier: '1.35x Trench Luck',
-    description: 'Provides additional catch speed and luck when fishing in Desolate Deep.'
-  }
 ];
 
-// 5. Totems Data
-export const TOTEMS_DATA: TotemItem[] = [
-  {
-    name: 'Tempest Totem',
-    price: '$2,000',
-    location: 'Terrapin Island Hidden Cave',
-    coordinates: 'X: -150, Y: 140, Z: 1900',
-    effect: 'Summons Thunderstorm Weather instantly for 15 minutes.',
-    description: 'Essential for spawning storm-exclusive species like Electric Eel and Tempest Shark.'
-  },
-  {
-    name: 'Wind Totem',
-    price: '$2,000',
-    location: 'Snowcap Peak Cavern',
-    coordinates: 'X: 2650, Y: 210, Z: 2450',
-    effect: 'Triggers Heavy Wind conditions.',
-    description: 'Increases glider flight speed and spawns windy weather species.'
-  },
-  {
-    name: 'Sun Totem',
-    price: '$2,000',
-    location: 'Sunstone Island Peak',
-    coordinates: 'X: -900, Y: 220, Z: -1750',
-    effect: 'Clears storms and forces Clear Sunny Weather.',
-    description: 'Resets bad weather back to sunny daytime for daytime fish species.'
-  }
+// Other high-end rods that ARE verified (price + where to get them) but whose
+// full five-stat lines we have not transcribed yet. Kept OUT of RODS_DATA so
+// every array row stays a complete, verified stat line.
+export const VERIFIED_EXTRA_RODS: { name: string; price: string; location: string }[] = [
+  { name: 'Kings Rod', price: 'C$100,000', location: 'Keepers Altar (max weight: infinite)' },
+  { name: 'Poseidon Rod', price: 'C$450,000', location: 'Atlantis' },
+  { name: 'Zeus Rod', price: 'C$500,000', location: 'Atlantis' },
+  { name: "Heaven's Rod", price: 'C$800,000', location: 'Glacial Grotto' },
+  { name: 'Seraphic Rod', price: 'Level 1,000 level-up reward', location: 'Account progression reward' },
+  { name: 'No-Life Rod', price: 'Level 500 level-up reward', location: 'Account progression reward' },
 ];
 
-// 6. Fish Price & Rarity Data
+// 3. Locations — names and categories verified against fischipedia.org/wiki/Locations.
+// We do NOT publish coordinates, level gates or gear requirements because we
+// could not verify them; the old fabricated dataset has been deleted.
+export const LOCATIONS_DATA: LocationItem[] = [
+  // --- Major locations (verified list) ---
+  { name: 'Moosewood', category: 'Major', note: 'Starter island where every new player spawns; hosts the main rod shop (Training, Plastic, Carbon, Long, Fast and Lucky Rods).', rodsSold: ['Training Rod', 'Plastic Rod', 'Carbon Rod', 'Long Rod', 'Fast Rod', 'Lucky Rod'], notableFish: ['Anchovy', 'Bream', 'Largemouth Bass', 'Red Snapper', 'Sockeye Salmon'] },
+  { name: 'Ocean', category: 'Major', note: 'The open ocean surrounding all islands; a verified zone for many Common fish and several large Mythicals.', rodsSold: [], notableFish: ['Sardine', 'Haddock', 'Mackerel', 'Mullet', 'Porgy', 'Shrimp', 'Mussel', 'Lobster', 'Bull Shark', 'Colossal Squid', 'Great White Shark', 'Whale Shark', 'Oarfish'] },
+  { name: 'Roslit Bay', category: 'Major', note: 'Home of the Orc NPC whose simple quest (catch one Pufferfish) rewards the FREE Magma Rod. Also sells the Steady, Fortune and Rapid Rods.', rodsSold: ['Steady Rod', 'Fortune Rod', 'Rapid Rod', 'Magma Rod (free quest reward)'], notableFish: ['Minnow', 'Chub', 'Axolotl'] },
+  { name: 'Roslit Volcano', category: 'Major', note: 'Volcanic sub-area of Roslit Bay verified on the official locations list.', rodsSold: [], notableFish: [] },
+  { name: 'Sunstone Island', category: 'Major', note: 'Where the Merlin NPC sells Merlin\'s Staff (C$800,000, 254% Luck).', rodsSold: ["Merlin's Staff"], notableFish: [] },
+  { name: 'Terrapin Island', category: 'Major', note: 'Sells the Magnet Rod (C$15,000).', rodsSold: ['Magnet Rod'], notableFish: ['Gudgeon', 'Sea Turtle'] },
+  { name: 'Snowcap Island', category: 'Major', note: 'Frozen biome verified on the official locations list.', rodsSold: [], notableFish: ['Bluegill', 'Pollock', 'Herring', 'Glacierfish'] },
+  { name: 'Vertigo', category: 'Major', note: 'Sells the Nocturnal Rod (C$15,000).', rodsSold: ['Nocturnal Rod'], notableFish: ['Isonade'] },
+  { name: 'The Deep', category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+  { name: 'Desolate Deep', category: 'Major', note: 'Where the Trident Rod (C$150,000) is obtained.', rodsSold: ['Trident Rod'], notableFish: ['Barbed Shark'] },
+  { name: 'Statue of Sovereignty', category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+  { name: 'Mushgrove Swamp', category: 'Major', note: 'Where the Frog Rod (C$12,000) is sold, behind a 50% Bestiary completion requirement.', rodsSold: ['Frog Rod'], notableFish: ['Alligator'] },
+  { name: 'Forsaken Shores', category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+  { name: 'Ancient Isle', category: 'Major', note: 'Verified home of the Mythical Helicoprion.', rodsSold: [], notableFish: ['Helicoprion'] },
+  { name: 'Northern Expedition', category: 'Major', note: 'Where the Arctic Rod (C$25,000) is obtained at Northern Summit.', rodsSold: ['Arctic Rod'], notableFish: [] },
+  { name: 'Boreal Pines', category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+  { name: 'Atlantis', category: 'Major', note: 'Verified home of the Poseidon Rod (C$450,000) and Zeus Rod (C$500,000).', rodsSold: ['Poseidon Rod', 'Zeus Rod'], notableFish: [] },
+  { name: 'Castaway Cliffs', category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+  { name: 'Cursed Isle', category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+  { name: 'Grand Reef', category: 'Major', note: 'Verified home of the Legendary Coral Emperor.', rodsSold: [], notableFish: ['Coral Emperor'] },
+  { name: 'Lost Jungle', category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+  { name: 'Drylands', category: 'Major', note: 'Verified home of the Legendary Ancient Coelacanth.', rodsSold: [], notableFish: ['Ancient Coelacanth'] },
+  { name: 'Everturn Forest', category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+  { name: 'Scoria Reach', category: 'Major', note: 'Verified home of the Legendary Cindercoil Eel.', rodsSold: [], notableFish: ['Cindercoil Eel'] },
+  { name: 'Tidefall', category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+  { name: 'Treasure Island', category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+  { name: 'Trade Plaza', category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+  { name: "Mariana's Veil", category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+  { name: 'Wrath of Olympus', category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+  { name: 'Aquarium', category: 'Major', note: 'Verified major location on the official list. Details not documented on our site yet.', rodsSold: [], notableFish: [] },
+
+  // --- Sub-locations with verified associations ---
+  { name: 'The Depths', category: 'Sub-Location', note: 'Deep sub-location where the Rod Of The Depths (C$750,000) is obtained.', rodsSold: ['Rod Of The Depths'], notableFish: ['Ancient Eel', 'Barreleye Fish', 'Sea Snake'] },
+  { name: 'Coral Bastion', category: 'Sub-Location', note: 'Where the Coral Rod (C$30,000) is sold, behind a 50% Bestiary completion requirement.', rodsSold: ['Coral Rod'], notableFish: [] },
+  { name: 'The Arch', category: 'Sub-Location', note: 'NPC Caleia sells the Destiny Rod (C$190,000) here — requires 350+ Bestiary fish discoveries.', rodsSold: ['Destiny Rod'], notableFish: [] },
+  { name: 'Keepers Altar', category: 'Sub-Location', note: 'Verified home of the Kings Rod (C$100,000, infinite max weight).', rodsSold: ['Kings Rod'], notableFish: [] },
+  { name: 'Glacial Grotto', category: 'Sub-Location', note: 'Verified home of Heaven\'s Rod (C$800,000).', rodsSold: ["Heaven's Rod"], notableFish: [] },
+];
+
+// Limited-time event locations, verified as a list on the official wiki.
+export const LIMITED_EVENT_LOCATIONS: string[] = [
+  'Jurassic Island', 'Winter Village', 'Fischfest 1', 'Fischfest 2', 'Sweetheart Shores',
+  'Easter Cove', 'Shamrock Seas', 'Cults Curse', "Jungle's Echo", 'Maple Meadow',
+  'Northstar Village', 'Streamer Hideout', 'Crypt of the Green One', "Crook's Hallow",
+  'Archaeological Site', "Archaeologist's Boat",
+];
+
+// 4. Fish values — 37 species verified against the official fish tables
+// (fischipedia.org/wiki/Fish, /wiki/Legendary, /wiki/Mythical), September 2026.
+// The old ~37-entry fish list was ~80% fabricated and has been deleted wholesale.
+// Weather/season preferences are NOT published here because we could not verify them.
 export const FISH_VALUES: FishItem[] = [
-  // Mythical & Event Bosses
-  { name: 'Celestial Leviathan', rarity: 'Mythical', basePrice: '$15,000', preferredWeather: 'Night / Clear', preferredSeason: 'All', location: 'Keep Sanctuary (Secret Altar)' },
-  { name: 'Megalodon Shark', rarity: 'Mythical', basePrice: '$12,500', preferredWeather: 'Thunderstorm', preferredSeason: 'Autumn', location: 'Deep Ocean Trench' },
-  { name: 'Bioluminescent Kraken', rarity: 'Mythical', basePrice: '$14,200', preferredWeather: 'Fog', preferredSeason: 'Winter', location: 'Desolate Deep Abyssal Trench' },
-  { name: 'Ancient Depth Serpent', rarity: 'Mythical', basePrice: '$16,500', preferredWeather: 'Rain', preferredSeason: 'All', location: 'Brine Pool Sub-Trench' },
-  { name: 'Spectral Ghost Fish', rarity: 'Mythical', basePrice: '$11,000', preferredWeather: 'Night / Fog', preferredSeason: 'Autumn', location: 'Sunken Shipwreck' },
+  // --- Common (verified C$/kg; single-catch average not documented by the source) ---
+  { name: 'Anchovy', rarity: 'Common', location: 'Moosewood', pricePerKg: '166.67', avgValue: 'Not documented' },
+  { name: 'Sardine', rarity: 'Common', location: 'Ocean', pricePerKg: '170', avgValue: 'Not documented' },
+  { name: 'Haddock', rarity: 'Common', location: 'Ocean', pricePerKg: '132', avgValue: 'Not documented' },
+  { name: 'Mackerel', rarity: 'Common', location: 'Ocean', pricePerKg: '13', avgValue: 'Not documented' },
+  { name: 'Mullet', rarity: 'Common', location: 'Ocean', pricePerKg: '27', avgValue: 'Not documented' },
+  { name: 'Porgy', rarity: 'Common', location: 'Ocean', pricePerKg: '18', avgValue: 'Not documented' },
+  { name: 'Shrimp', rarity: 'Common', location: 'Ocean', pricePerKg: '250', avgValue: 'Not documented' },
+  { name: 'Mussel', rarity: 'Common', location: 'Ocean', pricePerKg: '250', avgValue: 'Not documented' },
+  { name: 'Lobster', rarity: 'Common', location: 'Ocean', pricePerKg: '17.86', avgValue: 'Not documented' },
+  { name: 'Minnow', rarity: 'Common', location: 'Roslit Bay', pricePerKg: '85', avgValue: 'Not documented' },
+  { name: 'Chub', rarity: 'Common', location: 'Roslit Bay', pricePerKg: '17.33', avgValue: 'Not documented' },
+  { name: 'Bluegill', rarity: 'Common', location: 'Snowcap Island', pricePerKg: '85', avgValue: 'Not documented' },
+  { name: 'Pollock', rarity: 'Common', location: 'Snowcap Island', pricePerKg: '113', avgValue: 'Not documented' },
+  { name: 'Herring', rarity: 'Common', location: 'Snowcap Island', pricePerKg: '47.27', avgValue: 'Not documented' },
+  { name: 'Gudgeon', rarity: 'Common', location: 'Terrapin Island', pricePerKg: '166.67', avgValue: 'Not documented' },
+  { name: 'Bream', rarity: 'Common', location: 'Moosewood', pricePerKg: '19.26', avgValue: 'Not documented' },
+  { name: 'Largemouth Bass', rarity: 'Common', location: 'Moosewood', pricePerKg: '11.56', avgValue: 'Not documented' },
+  { name: 'Red Snapper', rarity: 'Common', location: 'Moosewood', pricePerKg: '7.57', avgValue: 'Not documented' },
+  { name: 'Sockeye Salmon', rarity: 'Common', location: 'Moosewood', pricePerKg: '7.29', avgValue: 'Not documented' },
 
-  // Legendary Predators & Deep Sea
-  { name: 'Magma Shark', rarity: 'Legendary', basePrice: '$4,500', preferredWeather: 'Sunny', preferredSeason: 'Summer', location: 'Roslit Volcano Lava Pool' },
-  { name: 'Abyssal Anglerfish', rarity: 'Legendary', basePrice: '$4,200', preferredWeather: 'Fog', preferredSeason: 'Winter', location: 'Desolate Deep' },
-  { name: 'Electric Eel', rarity: 'Legendary', basePrice: '$3,600', preferredWeather: 'Thunderstorm', preferredSeason: 'Spring', location: 'Terrapin Island Mangroves' },
-  { name: 'Tempest Shark', rarity: 'Legendary', basePrice: '$4,800', preferredWeather: 'Thunderstorm', preferredSeason: 'Autumn', location: 'Open Ocean Whirlpool' },
-  { name: 'Gilded Sailfish', rarity: 'Legendary', basePrice: '$3,900', preferredWeather: 'Windy', preferredSeason: 'Summer', location: 'Sunstone Island Cliffs' },
-  { name: 'Blizzard Salmon', rarity: 'Legendary', basePrice: '$3,750', preferredWeather: 'Snow', preferredSeason: 'Winter', location: 'Snowcap Peak Lake' },
-  { name: 'Phantom Ray', rarity: 'Legendary', basePrice: '$4,100', preferredWeather: 'Night', preferredSeason: 'Spring', location: 'Secret Island Caverns' },
+  // --- Legendary (verified C$/kg and single-catch average) ---
+  { name: 'Axolotl', rarity: 'Legendary', location: 'Roslit Bay', pricePerKg: '108.87', avgValue: '1,088.7' },
+  { name: 'Alligator', rarity: 'Legendary', location: 'Mushgrove Swamp', pricePerKg: '6.33', avgValue: '1,423.5' },
+  { name: 'Bull Shark', rarity: 'Legendary', location: 'Ocean', pricePerKg: '13.85', avgValue: '1,523.1' },
+  { name: 'Ancient Eel', rarity: 'Legendary', location: 'The Depths', pricePerKg: '9.78', avgValue: '1,467' },
+  { name: 'Ancient Coelacanth', rarity: 'Legendary', location: 'Drylands', pricePerKg: '30', avgValue: '2,400' },
+  { name: 'Cindercoil Eel', rarity: 'Legendary', location: 'Scoria Reach', pricePerKg: '129.17', avgValue: '12,712.5' },
+  { name: 'Coral Emperor', rarity: 'Legendary', location: 'Grand Reef', pricePerKg: '67.9', avgValue: '1,527.8' },
+  { name: 'Barbed Shark', rarity: 'Legendary', location: 'Desolate Deep', pricePerKg: '2.18', avgValue: '1,801.1' },
 
-  // Rare Species
-  { name: 'Glacier Cod', rarity: 'Rare', basePrice: '$850', preferredWeather: 'Snow / Wind', preferredSeason: 'Winter', location: 'Snowcap Island Shore' },
-  { name: 'Golden Perch', rarity: 'Rare', basePrice: '$650', preferredWeather: 'Sunny', preferredSeason: 'Spring', location: 'Moosewood Deep Pond' },
-  { name: 'Obsidian Salmon', rarity: 'Rare', basePrice: '$920', preferredWeather: 'Any', preferredSeason: 'Summer', location: 'Roslit Bay Basalt Rocks' },
-  { name: 'Starlight Flounder', rarity: 'Rare', basePrice: '$980', preferredWeather: 'Night / Clear', preferredSeason: 'All', location: 'Keep Sanctuary' },
-  { name: 'Alligator Gar', rarity: 'Rare', basePrice: '$780', preferredWeather: 'Fog / Rain', preferredSeason: 'Summer', location: 'Terrapin Bayou' },
-  { name: 'Void Squid', rarity: 'Rare', basePrice: '$1,100', preferredWeather: 'Any', preferredSeason: 'Winter', location: 'Desolate Deep Entrance' },
-  { name: 'Amberjack King', rarity: 'Rare', basePrice: '$820', preferredWeather: 'Windy', preferredSeason: 'Autumn', location: 'Sunstone Coral Reef' },
-  { name: 'Aurora Trout', rarity: 'Rare', basePrice: '$950', preferredWeather: 'Snow / Night', preferredSeason: 'Winter', location: 'Snowcap Glacier Cave' },
-
-  // Uncommon Species
-  { name: 'Roslit Flounder', rarity: 'Uncommon', basePrice: '$280', preferredWeather: 'Clear', preferredSeason: 'Summer', location: 'Roslit Bay Beach' },
-  { name: 'Clownfish', rarity: 'Uncommon', basePrice: '$210', preferredWeather: 'Sunny', preferredSeason: 'Spring', location: 'Sunstone Island Shallows' },
-  { name: 'Terrapin Mudfish', rarity: 'Uncommon', basePrice: '$190', preferredWeather: 'Rain', preferredSeason: 'Summer', location: 'Terrapin Island Swamp' },
-  { name: 'Frost Trout', rarity: 'Uncommon', basePrice: '$320', preferredWeather: 'Snow', preferredSeason: 'Winter', location: 'Snowcap Docks' },
-  { name: 'Red Snapper', rarity: 'Uncommon', basePrice: '$250', preferredWeather: 'Windy', preferredSeason: 'Autumn', location: 'Moosewood Ocean Edge' },
-  { name: 'Angelfish', rarity: 'Uncommon', basePrice: '$310', preferredWeather: 'Sunny', preferredSeason: 'Spring', location: 'Sunstone Coral Reef' },
-  { name: 'Swamp Eel', rarity: 'Uncommon', basePrice: '$240', preferredWeather: 'Fog', preferredSeason: 'Autumn', location: 'Terrapin Mangroves' },
-  { name: 'Ice Pike', rarity: 'Uncommon', basePrice: '$340', preferredWeather: 'Snow / Wind', preferredSeason: 'Winter', location: 'Snowcap Ice Shelf' },
-
-  // Common Species
-  { name: 'Moosewood Trout', rarity: 'Common', basePrice: '$45', preferredWeather: 'Any', preferredSeason: 'All', location: 'Moosewood Starter Docks' },
-  { name: 'Pond Perch', rarity: 'Common', basePrice: '$35', preferredWeather: 'Sunny', preferredSeason: 'Spring', location: 'Moosewood Village Pond' },
-  { name: 'Common Carp', rarity: 'Common', basePrice: '$50', preferredWeather: 'Rain', preferredSeason: 'All', location: 'Moosewood River' },
-  { name: 'Ocean Minnow', rarity: 'Common', basePrice: '$30', preferredWeather: 'Any', preferredSeason: 'Summer', location: 'Shallow Waters' },
-  { name: 'Sea Bass', rarity: 'Common', basePrice: '$65', preferredWeather: 'Windy', preferredSeason: 'Autumn', location: 'Moosewood Coast' },
-  { name: 'Sand Goby', rarity: 'Common', basePrice: '$40', preferredWeather: 'Sunny', preferredSeason: 'Summer', location: 'Roslit Coast Sandbar' },
-  { name: 'Weed Shiner', rarity: 'Common', basePrice: '$25', preferredWeather: 'Any', preferredSeason: 'Spring', location: 'Terrapin Shallows' },
-  { name: 'Kelp Crab', rarity: 'Common', basePrice: '$55', preferredWeather: 'Fog', preferredSeason: 'All', location: 'Ocean Floor Kelp Forests' }
+  // --- Mythical (verified C$/kg and single-catch average) ---
+  { name: 'Colossal Squid', rarity: 'Mythical', location: 'Ocean', pricePerKg: '7.13', avgValue: '6,771.9' },
+  { name: 'Great White Shark', rarity: 'Mythical', location: 'Ocean', pricePerKg: '11.06', avgValue: '10,507' },
+  { name: 'Whale Shark', rarity: 'Mythical', location: 'Ocean', pricePerKg: '0.82', avgValue: '10,227.5' },
+  { name: 'Oarfish', rarity: 'Mythical', location: 'Ocean', pricePerKg: '12.92', avgValue: '2,583.2' },
+  { name: 'Barreleye Fish', rarity: 'Mythical', location: 'The Depths', pricePerKg: '446.67', avgValue: '466.7' },
+  { name: 'Glacierfish', rarity: 'Mythical', location: 'Snowcap Island', pricePerKg: '2.68', avgValue: '2,634.2' },
+  { name: 'Sea Turtle', rarity: 'Mythical', location: 'Terrapin Island', pricePerKg: '20.85', avgValue: '2,293.9' },
+  { name: 'Helicoprion', rarity: 'Mythical', location: 'Ancient Isle', pricePerKg: '8.24', avgValue: '2,760.6' },
+  { name: 'Isonade', rarity: 'Mythical', location: 'Vertigo', pricePerKg: '2.62', avgValue: '2,487.5' },
+  { name: 'Sea Snake', rarity: 'Mythical', location: 'The Depths', pricePerKg: '61.25', avgValue: '3,368.8' },
 ];
+
+// Honest, citable source line reused across pages.
+export const DATA_SOURCE_NOTE =
+  'Rod, fish and location data verified against fischipedia.org (the official Fisch Wiki), September 2026. Entries we could not verify were removed rather than guessed.';

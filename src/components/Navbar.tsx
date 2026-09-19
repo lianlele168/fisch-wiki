@@ -12,7 +12,6 @@ export default function Navbar() {
     { name: 'Codes', href: '/codes', icon: Gift, badge: 'HOT' },
     { name: 'Rod Tier List', href: '/rod-tier-list', icon: ShieldAlert },
     { name: 'Locations & Map', href: '/locations', icon: Compass },
-    { name: 'Enchants & Totems', href: '/enchantments-totems', icon: Sparkles },
     { name: 'Fish Values', href: '/fish-values', icon: DollarSign },
     { name: 'Beginner Guide', href: '/beginner-guide', icon: BookOpen }
   ];

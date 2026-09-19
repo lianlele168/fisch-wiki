@@ -11,8 +11,8 @@ import { ACTIVE_CODES, RODS_DATA, LOCATIONS_DATA } from '@/data/wikiData';
 import CopyButton from '@/components/CopyButton';
 
 export default function HomePage() {
-  const topRods = RODS_DATA.slice(0, 4);
-  const featuredLocations = LOCATIONS_DATA.slice(0, 3);
+  // Featured rods: the four highest verified Luck stats (Destiny Rod, Merlin's Staff, Fortune Rod, Lucky Rod).
+  const topRods = [...RODS_DATA].sort((a, b) => parseInt(b.luck.replace(/[^0-9-]/g, ''), 10) - parseInt(a.luck.replace(/[^0-9-]/g, ''), 10)).slice(0, 4);
 
   const faqs = [
     {
@@ -21,15 +21,15 @@ export default function HomePage() {
     },
     {
       q: 'What is the best fishing rod in Roblox Fisch?',
-      a: 'The Supreme Rod ($150,000) and Destiny Rod ($190,000) are considered S+ Tier. Supreme Rod offers +80% Lure Speed and +150% Luck, making it the most balanced end-game rod.'
+      a: 'By verified Luck, Merlin\'s Staff leads (254% Luck, C$800,000 from the Merlin NPC on Sunstone Island), followed by the Destiny Rod (250% Luck, 45% Lure Speed, C$190,000 from NPC Caleia at The Arch — it requires 350+ Bestiary fish discoveries and is not a quest reward). The Magma Rod is the best free rod: complete the Orc\'s Pufferfish quest at Roslit Bay at no cost.'
     },
     {
       q: 'Where is the Desolate Deep located in Fisch?',
-      a: 'The Desolate Deep is hidden underwater near Sunstone Island (X: -950, Y: -250, Z: -1800). You MUST purchase Diving Gear ($3,000) at Moosewood before diving, or you will drown in seconds.'
+      a: 'Desolate Deep is a verified major location on the official Fisch Wiki map, and it is where the Trident Rod (C$150,000) is obtained. Open your in-game map and sail to the marked island — we do not publish fan-made coordinates because they cannot be verified.'
     },
     {
-      q: 'How do I change weather and summon rain in Fisch?',
-      a: 'You can buy weather totems from hidden islands! For example, the Tempest Totem ($2,000) at Terrapin Island instantly summons a thunderstorm for 15 minutes.'
+      q: 'How do I get a strong rod without spending C$?',
+      a: 'Complete the Orc NPC quest at Roslit Bay: catch one Pufferfish and the Magma Rod is yours for free. It has 55% Luck, can fish in lava pools, and applies the Ember mutation (3x sale value) 35% of the time.'
     }
   ];
 
@@ -42,15 +42,15 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto text-center space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-xs font-semibold shadow-inner">
             <Flame className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
-            <span>Updated for • 100% Verified Roblox Data</span>
+            <span>Updated September 2026 • Data Verified Against the Official Fisch Wiki</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">
-            Roblox <span className="gradient-text-cyan">Fisch Wiki</span> & Codes Database
+            Roblox <span className="gradient-text-cyan">Fisch Wiki</span> &amp; Codes Database
           </h1>
 
           <p className="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
-            Your ultimate community guide for Roblox Fisch. Grab active <strong className="text-cyan-300 font-semibold">Fisch codes</strong>, compare the <strong className="text-cyan-300 font-semibold">fishing rod tier list</strong>, navigate to <strong className="text-cyan-300 font-semibold">Desolate Deep coordinates</strong>, and unlock weather totems.
+            Your honest community guide for Roblox Fisch. Grab active <strong className="text-cyan-300 font-semibold">Fisch codes</strong>, compare <strong className="text-cyan-300 font-semibold">verified rod stats</strong>, browse <strong className="text-cyan-300 font-semibold">real fish prices</strong>, and see exactly where every rod is sold. If we can&apos;t verify it, we don&apos;t publish it.
           </p>
 
           {/* Quick Hero CTAs */}
@@ -85,20 +85,20 @@ export default function HomePage() {
           {/* Key Stats Banner */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-10 max-w-4xl mx-auto">
             <div className="glass-card p-4 rounded-xl text-center">
-              <span className="block text-2xl font-extrabold text-cyan-400">500M+</span>
-              <span className="text-xs text-slate-400">Total Visits</span>
+              <span className="block text-2xl font-extrabold text-cyan-400">{ACTIVE_CODES.length}</span>
+              <span className="text-xs text-slate-400">Active Codes Listed</span>
             </div>
             <div className="glass-card p-4 rounded-xl text-center">
-              <span className="block text-2xl font-extrabold text-amber-400">15+</span>
-              <span className="text-xs text-slate-400">Unique Rods</span>
+              <span className="block text-2xl font-extrabold text-amber-400">{RODS_DATA.length}</span>
+              <span className="text-xs text-slate-400">Rods With Verified Stats</span>
             </div>
             <div className="glass-card p-4 rounded-xl text-center">
-              <span className="block text-2xl font-extrabold text-emerald-400">100+</span>
-              <span className="text-xs text-slate-400">Fish Species</span>
+              <span className="block text-2xl font-extrabold text-emerald-400">37</span>
+              <span className="text-xs text-slate-400">Fish With Verified Prices</span>
             </div>
             <div className="glass-card p-4 rounded-xl text-center">
-              <span className="block text-2xl font-extrabold text-purple-400">10+</span>
-              <span className="text-xs text-slate-400">Islands & Trenches</span>
+              <span className="block text-2xl font-extrabold text-purple-400">{LOCATIONS_DATA.length}</span>
+              <span className="text-xs text-slate-400">Verified Locations</span>
             </div>
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function HomePage() {
             <div>
               <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">Fishing Rod Tier List</h3>
               <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                Rankings and stat comparisons for Supreme Rod, Destiny Rod, Magma Rod, and early game economy rods.
+                Rankings and full stat lines for all 20 verified rods, including Destiny Rod (250% Luck) and the free Magma Rod quest reward.
               </p>
             </div>
             <div className="pt-2 flex items-center text-xs font-semibold text-cyan-400 group-hover:translate-x-1 transition-transform">
@@ -157,11 +157,11 @@ export default function HomePage() {
             <div>
               <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">Map & Locations Guide</h3>
               <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                Coordinates for Moosewood, Roslit Volcano, Snowcap Peak, and the underwater Desolate Deep trench.
+                Every location verified on the official Fisch Wiki map — Moosewood, Roslit Bay, The Depths, The Arch and more — plus which rods are sold where.
               </p>
             </div>
             <div className="pt-2 flex items-center text-xs font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform">
-              <span>Find All Coordinates</span>
+              <span>Browse All Locations</span>
               <ArrowRight className="w-4 h-4 ml-1" />
             </div>
           </Link>
@@ -211,8 +211,8 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white">Top Fishing Rods Overview</h2>
-            <p className="text-xs text-slate-400">Quick summary of high-tier rods in Roblox Fisch.</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-white">Highest Verified Luck Rods</h2>
+            <p className="text-xs text-slate-400">The four strongest rods by verified Luck stat, straight from the official Fisch Wiki.</p>
           </div>
           <Link href="/rod-tier-list" className="text-xs font-semibold text-cyan-400 hover:underline">
             Full Tier List →
@@ -223,7 +223,7 @@ export default function HomePage() {
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-900/80 text-slate-300 uppercase text-[10px] font-bold tracking-wider border-b border-slate-800">
               <tr>
-                <th className="p-4">Tier</th>
+                <th className="p-4">Luck Tier</th>
                 <th className="p-4">Rod Name</th>
                 <th className="p-4">Price</th>
                 <th className="p-4">Lure Speed</th>

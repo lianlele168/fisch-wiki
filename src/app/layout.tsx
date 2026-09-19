@@ -6,22 +6,22 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   metadataBase: new URL('https://fisch.robloxwikihub.com'),
   title: 'Fisch Wiki — Roblox Fisch Codes, Rod Tier List & Map Locations ',
-  description: 'The ultimate Roblox Fisch Wiki & Database. Get active fisch codes, fishing rod tier list, desolate deep location coordinates, enchantments, and fish values.',
+  description: 'The Roblox Fisch Wiki built on verified data. Get active fisch codes, verified fishing rod stats, real fish prices, and every location on the official map.',
   keywords: [
     'fisch codes',
     'roblox fisch wiki',
     'best rod in fisch',
     'fisch rod tier list',
-    'fisch desolate deep location',
-    'fisch secret island location',
-    'fisch enchantments tier list',
-    'fisch totem locations',
+    'fisch destiny rod',
+    'fisch magma rod free',
+    'fisch fish prices',
+    'fisch locations',
     'fisch values list'
   ],
   authors: [{ name: 'Fisch Wiki Angler Community' }],
   openGraph: {
     title: 'Roblox Fisch Wiki & Codes Database',
-    description: 'Active Fisch codes, fishing rod tier list, secret locations, and weather totems for Roblox anglers.',
+    description: 'Active Fisch codes, verified rod stats, real fish prices, and the full location directory for Roblox anglers.',
     type: 'website',
     url: 'https://fisch.robloxwikihub.com',
     siteName: 'Fisch Wiki'
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Roblox Fisch Wiki & Codes Database',
-    description: 'Active Fisch codes, fishing rod tier list, secret locations, and weather totems.'
+    description: 'Active Fisch codes, verified rod stats, real fish prices, and the full location directory.'
   },
   robots: {
     index: true,
@@ -53,7 +53,7 @@ export default function RootLayout({
     '@type': 'WebSite',
     name: 'Fisch Wiki',
     url: 'https://fisch.robloxwikihub.com',
-    description: 'The ultimate Roblox Fisch Wiki & Database for active codes, rod tier lists, and map coordinates.'
+    description: 'The Roblox Fisch Wiki built on verified data: active codes, verified rod stats, real fish prices, and the full location directory.'
   };
 
   return (
