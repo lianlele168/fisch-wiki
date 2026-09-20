@@ -123,7 +123,7 @@ export default function BeginnerGuidePage() {
           authorName="Hlele"
           role="Editor"
           experience="AI-assisted research, human-reviewed"
-          patchVersion="Data verified September 2026"
+          patchVersion="Sources last checked September 2026"
           editorialNote="All rod stats, fish prices and locations on this page are cross-checked against multiple sources including fischipedia.org (the official Fisch Wiki). Unverifiable claims from our old version — including fake coordinates and nonexistent fish — have been deleted, and anything we could not confirm is explicitly labeled."
         />
 
