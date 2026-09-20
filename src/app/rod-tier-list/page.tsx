@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     canonical: '/rod-tier-list',
   },
 
-  title: 'Roblox Fisch Rod Stats & Tier List — All 20 Verified Rods',
+  title: 'Roblox Fisch Rod Stats & Tier List — All 20 Rods',
   description: 'Complete Roblox Fisch fishing rod stat table with verified Lure Speed, Luck, Control, Resilience, Max Kg and prices for 20 rods. Includes Destiny Rod (45% Lure / 250% Luck) and the free Magma Rod quest.',
   keywords: ['fisch rod tier list', 'best rod in fisch', 'fisch destiny rod', 'fisch magma rod free', 'roblox fisch rods']
 };
@@ -21,7 +21,7 @@ export default function RodTierListPage() {
       <div className="space-y-4 border-b border-slate-800 pb-8 text-center sm:text-left">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-300 text-xs font-semibold">
           <Trophy className="w-4 h-4 text-amber-400" />
-          <span>Verified Stat Table • {RODS_DATA.length} Rods</span>
+          <span>Stat Table • {RODS_DATA.length} Rods</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Roblox <span className="gradient-text-cyan">Fisch Rod Stats &amp; Tier List</span>
@@ -126,7 +126,7 @@ export default function RodTierListPage() {
 
       {/* Other verified rods (price/location only) */}
       <section className="space-y-4">
-        <h2 className="text-2xl font-extrabold text-white">Other Verified High-End Rods</h2>
+        <h2 className="text-2xl font-extrabold text-white">Other High-End Rods</h2>
         <p className="text-xs text-slate-400">
           These rods are confirmed to exist with the price and acquisition method below, but we have not transcribed their full stat lines yet — so they are listed here instead of in the table above.
         </p>

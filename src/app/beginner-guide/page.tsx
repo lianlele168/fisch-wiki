@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     canonical: '/beginner-guide',
   },
 
-  title: 'Roblox Fisch Beginner Guide — Rod Progression With Verified Stats',
+  title: 'Roblox Fisch Beginner Guide — Rod Progression With Stats',
   description: 'Roblox Fisch progression roadmap built on verified data: which rod to buy at every stage, the free Magma Rod quest at Roslit Bay, and how to unlock the Destiny Rod at The Arch.',
   keywords: ['fisch beginner guide', 'fisch leveling guide', 'fisch rod progression', 'fisch magma rod quest', 'fisch destiny rod unlock', 'fisch best early rod']
 };
@@ -71,7 +71,7 @@ export default function BeginnerGuidePage() {
     },
     {
       q: 'How do I unlock the Destiny Rod?',
-      a: 'The Destiny Rod is sold by the NPC Caleia at The Arch for C$190,000, and she requires 350+ Bestiary fish discoveries before you can buy it. It is not a quest reward. Verified stats: 45% Lure Speed, 250% Luck, 0.2 Control, 10% Resilience, 177,777kg max weight.'
+      a: 'The Destiny Rod is sold by the NPC Caleia at The Arch for C$190,000, and she requires 350+ Bestiary fish discoveries before you can buy it. It is not a quest reward. Stats: 45% Lure Speed, 250% Luck, 0.2 Control, 10% Resilience, 177,777kg max weight.'
     },
     {
       q: 'Why do the fish prices on this site differ from other guides?',
@@ -109,7 +109,7 @@ export default function BeginnerGuidePage() {
       <div className="space-y-4 border-b border-slate-800 pb-8 text-center sm:text-left">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-300 text-xs font-semibold">
           <BookOpen className="w-4 h-4 text-cyan-400" />
-          <span>Progression Walkthrough • Verified Data Edition</span>
+          <span>Progression Walkthrough • Sourced Data Edition</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Roblox <span className="gradient-text-cyan">Fisch Beginner &amp; Rod Progression Guide</span>
@@ -224,7 +224,7 @@ export default function BeginnerGuidePage() {
               <tr>
                 <th className="p-4">Rod Model</th>
                 <th className="p-4">Cost (verified)</th>
-                <th className="p-4">Key Verified Stats</th>
+                <th className="p-4">Key Stats</th>
                 <th className="p-4">Strategic Verdict</th>
               </tr>
             </thead>
@@ -249,7 +249,7 @@ export default function BeginnerGuidePage() {
           <span>How Money Actually Works in Fisch</span>
         </h2>
         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-          Verified sale prices are quoted per kg and as a single-catch average in the official fish tables. For reliable early income, fish the verified Ocean commons: Shrimp and Mussel (C$250/kg each), Sardine (C$170/kg) and Anchovy (C$166.67/kg) are the strongest per-kg earners we have verified. For mutation value, the free Magma Rod&apos;s Ember mutation triples the sale value of 35% of your catches. For big single catches, the verified Mythical tier includes the Great White Shark (avg C$10,507), Whale Shark (avg C$10,227.5) and Colossal Squid (avg C$6,771.9), all found in the Ocean. Actual sale prices in game scale with the weight and mutations of your individual catch, so treat the averages as baselines.
+          Sale prices are quoted per kg and as a single-catch average in the official fish tables. For reliable early income, fish the verified Ocean commons: Shrimp and Mussel (C$250/kg each), Sardine (C$170/kg) and Anchovy (C$166.67/kg) are the strongest per-kg earners we have verified. For mutation value, the free Magma Rod&apos;s Ember mutation triples the sale value of 35% of your catches. For big single catches, the verified Mythical tier includes the Great White Shark (avg C$10,507), Whale Shark (avg C$10,227.5) and Colossal Squid (avg C$6,771.9), all found in the Ocean. Actual sale prices in game scale with the weight and mutations of your individual catch, so treat the averages as baselines.
         </p>
       </section>
 

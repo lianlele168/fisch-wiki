@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     canonical: '/locations',
   },
 
-  title: 'Roblox Fisch Locations Guide — All Verified Major & Sub Locations',
+  title: 'Roblox Fisch Locations Guide — All Major & Sub Locations',
   description: 'Every Roblox Fisch location verified against the official Fisch Wiki: major islands like Moosewood and Roslit Bay, sub-locations like The Depths and The Arch, plus which rods are sold where.',
   keywords: ['fisch locations', 'fisch map guide', 'fisch roslit bay', 'fisch moosewood', 'fisch the depths', 'roblox fisch islands']
 };
@@ -22,7 +22,7 @@ export default function LocationsPage() {
       <div className="space-y-4 border-b border-slate-800 pb-8 text-center sm:text-left">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-300 text-xs font-semibold">
           <Compass className="w-4 h-4 text-emerald-400" />
-          <span>{LOCATIONS_DATA.length} Verified Locations</span>
+          <span>{LOCATIONS_DATA.length} Locations</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Roblox <span className="gradient-text-cyan">Fisch Locations Guide</span>
@@ -34,7 +34,7 @@ export default function LocationsPage() {
 
       {/* Locations with verified rod / fish data */}
       <section className="space-y-6">
-        <h2 className="text-2xl font-extrabold text-white">Locations With Verified Rod Shops &amp; Fish</h2>
+        <h2 className="text-2xl font-extrabold text-white">Locations With Rod Shops &amp; Fish</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {withData.map((loc) => (
             <div key={loc.name} className="glass-card p-6 rounded-2xl space-y-4 border-slate-800 flex flex-col justify-between">
@@ -66,7 +66,7 @@ export default function LocationsPage() {
 
                 {loc.notableFish.length > 0 && (
                   <div className="space-y-1.5">
-                    <span className="text-[11px] font-semibold text-slate-400">Verified fish here:</span>
+                    <span className="text-[11px] font-semibold text-slate-400">Fish here:</span>
                     <div className="flex flex-wrap gap-1.5">
                       {loc.notableFish.map((fish) => (
                         <span key={fish} className="px-2 py-0.5 text-[10px] font-medium bg-cyan-950 text-cyan-200 border border-cyan-800/60 rounded">
@@ -89,7 +89,7 @@ export default function LocationsPage() {
 
       {/* Full verified directory */}
       <section className="space-y-4">
-        <h2 className="text-2xl font-extrabold text-white">Full Verified Location Directory</h2>
+        <h2 className="text-2xl font-extrabold text-white">Full Location Directory</h2>
         <p className="text-xs text-slate-400">
           These locations are confirmed to exist on the official list. We have not yet documented their rod vendors or fish tables — blank entries stay blank instead of being filled with guesses.
         </p>

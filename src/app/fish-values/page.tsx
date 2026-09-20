@@ -7,8 +7,8 @@ export const metadata: Metadata = {
     canonical: '/fish-values',
   },
 
-  title: 'Roblox Fisch Fish Values List — Verified C$/kg & Average Prices',
-  description: 'Verified Roblox Fisch fish price list: 37 species with C$ per kg and average single-catch value, covering Common, Legendary and Mythical rarities from the official Fisch Wiki.',
+  title: 'Roblox Fisch Fish Values List — C$/kg & Average Prices',
+  description: 'Roblox Fisch fish price list: 37 species with C$ per kg and average single-catch value, covering Common, Legendary and Mythical rarities from the official Fisch Wiki.',
   keywords: ['fisch values list', 'fisch fish values', 'roblox fisch fish prices', 'fisch c per kg', 'fisch mythical fish prices']
 };
 
@@ -57,7 +57,7 @@ export default function FishValuesPage() {
       <div className="space-y-4 border-b border-slate-800 pb-8 text-center sm:text-left">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-400 text-xs font-semibold">
           <DollarSign className="w-4 h-4" />
-          <span>Verified Prices • {FISH_VALUES.length} Species</span>
+          <span>Prices • {FISH_VALUES.length} Species</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Roblox <span className="gradient-text-gold">Fish Values &amp; Price List</span>

@@ -74,7 +74,7 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto text-center space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-xs font-semibold shadow-inner">
             <Flame className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
-            <span>Updated September 2026 • Data Verified Against the Official Fisch Wiki</span>
+            <span>Updated September 2026 • Data Sourced From the Official Fisch Wiki</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">
@@ -122,15 +122,15 @@ export default function HomePage() {
             </div>
             <div className="glass-card p-4 rounded-xl text-center">
               <span className="block text-2xl font-extrabold text-amber-400">{RODS_DATA.length}</span>
-              <span className="text-xs text-slate-400">Rods With Verified Stats</span>
+              <span className="text-xs text-slate-400">Rods With Stats</span>
             </div>
             <div className="glass-card p-4 rounded-xl text-center">
               <span className="block text-2xl font-extrabold text-emerald-400">37</span>
-              <span className="text-xs text-slate-400">Fish With Verified Prices</span>
+              <span className="text-xs text-slate-400">Fish With Prices</span>
             </div>
             <div className="glass-card p-4 rounded-xl text-center">
               <span className="block text-2xl font-extrabold text-purple-400">{LOCATIONS_DATA.length}</span>
-              <span className="text-xs text-slate-400">Verified Locations</span>
+              <span className="text-xs text-slate-400">Locations</span>
             </div>
           </div>
         </div>
@@ -243,7 +243,7 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white">Highest Verified Luck Rods</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-white">Highest Luck Rods</h2>
             <p className="text-xs text-slate-400">The four strongest rods by verified Luck stat, straight from the official Fisch Wiki.</p>
           </div>
           <Link href="/rod-tier-list" className="text-xs font-semibold text-cyan-400 hover:underline">

@@ -163,7 +163,7 @@ export default function FischCalculatorClient() {
                 ))}
               </select>
               <p className="text-[11px] text-slate-400 px-1">
-                Verified location: {currentFish?.location} • C$ {currentFish?.pricePerKg}/kg
+                Location: {currentFish?.location} • C$ {currentFish?.pricePerKg}/kg
               </p>
             </div>
 

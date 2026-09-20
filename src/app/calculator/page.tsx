@@ -4,7 +4,7 @@ import { Anchor, Sparkles, ArrowRight, BookOpen, HelpCircle, ShieldCheck } from 
 import FischCalculatorClient from './FischCalculatorClient';
 
 export const metadata: Metadata = {
-  title: 'Fisch Calculator: Verified Rod Stats & C$ Profit Estimator',
+  title: 'Fisch Calculator: Rod Stats & C$ Profit Estimator',
   description: 'Interactive Roblox Fisch calculator built on verified rod stats and fish prices. Estimate bite time, casts per hour, and projected C$ earnings per hour. Bonuses are clearly-labelled model estimates.',
   alternates: {
     canonical: 'https://fisch.robloxwikihub.com/calculator',
@@ -46,7 +46,7 @@ export default function CalculatorPage() {
         <div className="max-w-4xl mx-auto text-center space-y-4 relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Built on Verified Data • Model Estimates Clearly Labelled</span>
+            <span>Built on Sourced Data • Model Estimates Clearly Labelled</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
             Fisch <span className="text-cyan-400">Profit Estimator</span>
@@ -71,7 +71,7 @@ export default function CalculatorPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-300 leading-relaxed">
             <div className="space-y-3">
-              <h3 className="text-base font-semibold text-cyan-300">1. Verified Inputs</h3>
+              <h3 className="text-base font-semibold text-cyan-300">1. Inputs</h3>
               <p>
                 Rod Lure Speed and Luck percentages come straight from the official Fisch Wiki rod tables, and fish values come from the official fish tables — including corrections like the Destiny Rod&apos;s 45% Lure Speed and the free Magma Rod quest.
               </p>
